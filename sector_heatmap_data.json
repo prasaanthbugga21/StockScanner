@@ -1,5 +1,5 @@
 {
-  "scan_date": "2026-02-28 15:19 EST",
+  "scan_date": "2026-02-28 15:25 EST",
   "sectors": {
     "IT": {
       "sector": "IT",
@@ -1376,32 +1376,17 @@
           }
         },
         {
-          "ticker": "NAVINFLUOR.NS",
-          "minervini_score": 66.7,
-          "qullamaggie_score": 50.0,
-          "minervini_passed": false,
-          "qullamaggie_passed": false,
-          "adr": 3.73,
-          "rs_return": 9.08,
-          "volume_surge": {
-            "surge_ratio": 0.75,
-            "surge_detected": false,
-            "price_change_5d": -4.13,
-            "bullish_surge": false
-          }
-        },
-        {
           "ticker": "TATACHEM.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.5,
-          "rs_return": -9.81,
+          "adr": 0.0,
+          "rs_return": 0.0,
           "volume_surge": {
-            "surge_ratio": 1.01,
+            "surge_ratio": 1.0,
             "surge_detected": false,
-            "price_change_5d": 0.18,
+            "price_change_5d": 0.0,
             "bullish_surge": false
           }
         },
@@ -1451,13 +1436,13 @@
           }
         }
       ],
-      "avg_minervini_score": 25.0,
-      "avg_qullamaggie_score": 37.5,
-      "avg_adr": 3.04,
+      "avg_minervini_score": 19.1,
+      "avg_qullamaggie_score": 31.0,
+      "avg_adr": 2.59,
       "minervini_pct": 0.0,
-      "qullamaggie_pct": 25.0,
+      "qullamaggie_pct": 28.6,
       "surge_pct": 0.0,
-      "bullish_score": 25.0
+      "bullish_score": 20.0
     },
     "Capital Goods": {
       "sector": "Capital Goods",
