@@ -44,6 +44,9 @@ def fetch_data(ticker, period="1y"):
         df = yf.download(ticker, period=period, interval="1d", progress=False, auto_adjust=True)
         if df.empty or len(df) < 50:
             return None
+        # Fix yfinance multi-level columns (newer versions return MultiIndex)
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
         df.dropna(inplace=True)
         return df
     except Exception:
@@ -60,16 +63,16 @@ def check_minervini(df):
         sma150 = close.rolling(150).mean()
         sma200 = close.rolling(200).mean()
         
-        price = close.iloc[-1]
-        s50   = sma50.iloc[-1]
-        s150  = sma150.iloc[-1]
-        s200  = sma200.iloc[-1]
+        price = float(close.iloc[-1])
+        s50   = float(sma50.iloc[-1])
+        s150  = float(sma150.iloc[-1])
+        s200  = float(sma200.iloc[-1])
         
-        high_52w = close.rolling(252).max().iloc[-1]
-        low_52w  = close.rolling(252).min().iloc[-1]
+        high_52w = float(close.rolling(252).max().iloc[-1])
+        low_52w  = float(close.rolling(252).min().iloc[-1])
         
         # 200 SMA trending up (compare current vs 1 month ago)
-        sma200_1m_ago = sma200.iloc[-22] if len(sma200) > 22 else sma200.iloc[0]
+        sma200_1m_ago = float(sma200.iloc[-22] if len(sma200) > 22 else sma200.iloc[0])
         sma200_trending_up = s200 > sma200_1m_ago
         
         criteria = {
@@ -104,25 +107,25 @@ def check_qullamaggie(df):
         volume = df["Volume"]
         
         # ADR% — Average Daily Range over last 21 days
-        adr = ((high - low) / close).rolling(21).mean().iloc[-1] * 100
+        adr = float(((high - low) / close).rolling(21).mean().iloc[-1]) * 100
         
         # Volatility Contraction: compare last 3-week range vs prior 6-week range
-        recent_range = (high.iloc[-15:].max() - low.iloc[-15:].min()) / close.iloc[-15]
-        prior_range  = (high.iloc[-45:-15].max() - low.iloc[-45:-15].min()) / close.iloc[-45]
+        recent_range = float((high.iloc[-15:].max() - low.iloc[-15:].min()) / close.iloc[-15])
+        prior_range  = float((high.iloc[-45:-15].max() - low.iloc[-45:-15].min()) / close.iloc[-45])
         vcp_contraction = recent_range < (prior_range * 0.6)  # 40%+ contraction
         
         # Volume dry-up: last 2-week avg volume < prior 4-week avg
-        vol_recent = volume.iloc[-10:].mean()
-        vol_prior  = volume.iloc[-30:-10].mean()
+        vol_recent = float(volume.iloc[-10:].mean())
+        vol_prior  = float(volume.iloc[-30:-10].mean())
         volume_dryup = vol_recent < (vol_prior * 0.8)
         
         # Relative Strength proxy: stock return vs prior 3 months
         rs_period = min(63, len(close) - 1)
-        stock_return = (close.iloc[-1] / close.iloc[-rs_period] - 1) * 100
+        stock_return = float((close.iloc[-1] / close.iloc[-rs_period] - 1) * 100)
         
         # Near 52-week high (within 15% = setting up for breakout)
-        high_52w = high.rolling(252).max().iloc[-1]
-        near_high = close.iloc[-1] >= (0.85 * high_52w)
+        high_52w = float(high.rolling(252).max().iloc[-1])
+        near_high = float(close.iloc[-1]) >= (0.85 * high_52w)
         
         # Rising volume on up days (last 20 days)
         up_days    = df[df["Close"] > df["Close"].shift(1)].tail(20)
@@ -162,12 +165,12 @@ def check_volume_surge(df):
         volume = df["Volume"]
         close  = df["Close"]
         
-        avg_vol_50   = volume.rolling(50).mean().iloc[-1]
-        last_week_vol = volume.iloc[-5:].mean()
+        avg_vol_50   = float(volume.rolling(50).mean().iloc[-1])
+        last_week_vol = float(volume.iloc[-5:].mean())
         surge_ratio  = last_week_vol / avg_vol_50 if avg_vol_50 > 0 else 0
         
         # Price direction during surge
-        price_change = (close.iloc[-1] / close.iloc[-6] - 1) * 100
+        price_change = float((close.iloc[-1] / close.iloc[-6] - 1) * 100)
         
         return {
             "surge_ratio":   round(surge_ratio, 2),
