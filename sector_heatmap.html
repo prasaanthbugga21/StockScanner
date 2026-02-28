@@ -3,591 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NSE Sector Pulse — Minervini × Qullamaggie</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>NSE Sector Pulse</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:       #09090f;
-    --surface:  #0f0f1a;
-    --border:   #1e1e30;
-    --text:     #e0e0f0;
-    --muted:    #5a5a80;
-    --accent:   #7b61ff;
-
-    --bull-5:   #00ff88;
-    --bull-4:   #00e07a;
-    --bull-3:   #23c56e;
-    --bull-2:   #1aaa5c;
-    --bull-1:   #127a41;
-    --neutral:  #2a2a3d;
-    --bear-1:   #7a1f2e;
-    --bear-2:   #a02030;
-    --bear-3:   #c62535;
-    --bear-4:   #e62a3c;
-    --bear-5:   #ff2d42;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* ── SCANLINE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.07) 2px,
-      rgba(0,0,0,0.07) 4px
-    );
-    pointer-events: none;
-    z-index: 9999;
-  }
-
-  /* ── HEADER ── */
-  header {
-    padding: 28px 40px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .logo-area h1 {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    line-height: 1;
-    color: #fff;
-  }
-
-  .logo-area h1 span {
-    color: var(--accent);
-  }
-
-  .logo-area p {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    margin-top: 6px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .scan-meta {
-    text-align: right;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  .scan-meta .pulse {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--bull-3);
-    margin-right: 6px;
-    animation: blink 1.4s ease-in-out infinite;
-    vertical-align: middle;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.2; }
-  }
-
-  /* ── LEGEND ── */
-  .legend-strip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 40px;
-    border-bottom: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-
-  .legend-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-right: 4px;
-  }
-
-  .legend-bar {
-    display: flex;
-    gap: 3px;
-    align-items: center;
-  }
-
-  .legend-swatch {
-    width: 28px;
-    height: 14px;
-    border-radius: 2px;
-    font-size: 0;
-  }
-
-  .legend-endpoints {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--muted);
-    margin: 0 4px;
-  }
-
-  .legend-sep { flex: 1; }
-
-  /* ── METRIC TABS ── */
-  .metric-tabs {
-    display: flex;
-    gap: 0;
-    padding: 16px 40px 0;
-  }
-
-  .tab {
-    padding: 8px 20px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    border-bottom: none;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: var(--bg);
-    position: relative;
-    top: 1px;
-  }
-
-  .tab:first-child { border-radius: 6px 0 0 0; }
-  .tab:last-child  { border-radius: 0 6px 0 0; }
-
-  .tab.active {
-    color: var(--text);
-    background: var(--surface);
-    border-color: var(--accent);
-    border-bottom: 1px solid var(--surface);
-  }
-
-  .tab:hover:not(.active) { color: var(--text); }
-
-  /* ── HEATMAP CONTAINER ── */
-  .heatmap-wrap {
-    padding: 0 40px 24px;
-    border-top: 1px solid var(--accent);
-  }
-
-  .heatmap-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 12px;
-    padding-top: 20px;
-  }
-
-  /* ── SECTOR CARD ── */
-  .sector-card {
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.18s, box-shadow 0.18s;
-    position: relative;
-  }
-
-  .sector-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    z-index: 10;
-  }
-
-  .card-header {
-    padding: 14px 18px 10px;
-    position: relative;
-  }
-
-  .card-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 18px; right: 18px;
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-  }
-
-  .sector-name {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.2px;
-    color: #fff;
-  }
-
-  .sector-signal {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  /* ── SCORE RING ── */
-  .score-area {
-    position: absolute;
-    top: 12px; right: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .score-ring {
-    width: 52px; height: 52px;
-    position: relative;
-  }
-
-  .score-ring svg {
-    transform: rotate(-90deg);
-  }
-
-  .score-ring .track {
-    fill: none;
-    stroke: rgba(255,255,255,0.06);
-    stroke-width: 5;
-  }
-
-  .score-ring .fill {
-    fill: none;
-    stroke-width: 5;
-    stroke-linecap: round;
-    transition: stroke-dashoffset 0.8s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .score-number {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #fff;
-  }
-
-  /* ── MINI BARS ── */
-  .card-body {
-    padding: 12px 18px 14px;
-    display: grid;
-    gap: 8px;
-  }
-
-  .metric-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .metric-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-    width: 64px;
-    flex-shrink: 0;
-  }
-
-  .metric-bar-wrap {
-    flex: 1;
-    height: 5px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .metric-bar-fill {
-    height: 100%;
-    border-radius: 3px;
-    transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .metric-value {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--text);
-    width: 32px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  /* ── SURGE BADGE ── */
-  .surge-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 20px;
-    margin-top: 6px;
-  }
-
-  .surge-badge.bullish {
-    background: rgba(0,255,136,0.1);
-    color: var(--bull-3);
-    border: 1px solid rgba(0,255,136,0.2);
-  }
-
-  .surge-badge.neutral {
-    background: rgba(255,255,255,0.04);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-
-  /* ── DETAIL DRAWER ── */
-  .drawer-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s;
-  }
-
-  .drawer-overlay.open {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .drawer {
-    position: fixed;
-    top: 0; right: 0;
-    width: 420px;
-    max-width: 100vw;
-    height: 100vh;
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-    padding: 0;
-    overflow-y: auto;
-    transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-    z-index: 1001;
-  }
-
-  .drawer.open { transform: translateX(0); }
-
-  .drawer-header {
-    padding: 24px;
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    background: var(--surface);
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .drawer-close {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    width: 30px; height: 30px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s;
-    flex-shrink: 0;
-  }
-
-  .drawer-close:hover { color: var(--text); }
-
-  .drawer-body { padding: 20px 24px; }
-
-  .drawer-sector-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #fff;
-  }
-
-  .drawer-date {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  .drawer-score-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin: 20px 0;
-  }
-
-  .score-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 12px;
-    text-align: center;
-  }
-
-  .score-box .sb-value {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .score-box .sb-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.5rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-
-  /* ── STOCK TABLE ── */
-  .stock-table-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.78rem;
-  }
-
-  thead th {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: left;
-    padding: 6px 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  tbody tr {
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    transition: background 0.12s;
-  }
-
-  tbody tr:hover { background: rgba(255,255,255,0.03); }
-
-  tbody td {
-    padding: 8px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-  }
-
-  .tick { font-weight: 700; color: var(--text); }
-
-  .pass-dot {
-    display: inline-block;
-    width: 7px; height: 7px;
-    border-radius: 50%;
-  }
-
-  .pass-dot.yes { background: var(--bull-3); }
-  .pass-dot.no  { background: var(--bear-3); }
-
-  /* ── SUMMARY BAR ── */
-  .summary-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 20px 40px;
-  }
-
-  .summary-cell {
-    background: var(--surface);
-    padding: 14px 20px;
-    text-align: center;
-  }
-
-  .summary-cell .sv {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-  }
-
-  .summary-cell .sl {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 5px;
-  }
-
-  .sv.bull { color: var(--bull-3); }
-  .sv.bear { color: var(--bear-3); }
-  .sv.neut { color: #ffd166; }
-
-  /* ── ADR CHIP ── */
-  .adr-chip {
-    font-size: 0.58rem;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    header { padding: 20px; }
-    .legend-strip, .metric-tabs { padding-left: 20px; padding-right: 20px; }
-    .heatmap-wrap { padding: 0 20px 20px; }
-    .summary-bar { margin: 16px 20px; }
-    .summary-bar { grid-template-columns: 1fr 1fr; }
-    .drawer { width: 100vw; }
-  }
+:root{--bg:#09090f;--surface:#0f0f1a;--border:#1e1e30;--text:#e0e0f0;--muted:#5a5a80;--accent:#7b61ff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);pointer-events:none;z-index:9999}
+header{padding:28px 40px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.logo-area h1{font-size:2rem;font-weight:800;letter-spacing:-.5px;color:#fff}
+.logo-area h1 span{color:var(--accent)}
+.logo-area p{font-family:'Space Mono',monospace;font-size:.65rem;color:var(--muted);margin-top:6px;letter-spacing:2px;text-transform:uppercase}
+.scan-meta{text-align:right;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.8}
+.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#23c56e;margin-right:6px;animation:blink 1.4s ease-in-out infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.legend-strip{display:flex;align-items:center;gap:8px;padding:14px 40px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.legend-label{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-right:4px}
+.legend-bar{display:flex;gap:3px;align-items:center}
+.legend-swatch{width:28px;height:14px;border-radius:2px}
+.legend-endpoints{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--muted);margin:0 4px}
+.metric-tabs{display:flex;padding:16px 40px 0}
+.tab{padding:8px 20px;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-bottom:none;cursor:pointer;transition:all .2s;background:var(--bg);position:relative;top:1px}
+.tab:first-child{border-radius:6px 0 0 0}.tab:last-child{border-radius:0 6px 0 0}
+.tab.active{color:var(--text);background:var(--surface);border-color:var(--accent);border-bottom:1px solid var(--surface)}
+.heatmap-wrap{padding:0 40px 24px;border-top:1px solid var(--accent)}
+.heatmap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding-top:20px}
+.sector-card{border-radius:10px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s;position:relative}
+.sector-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.5);z-index:10}
+.card-header{padding:14px 18px 10px;position:relative}
+.card-header::after{content:'';position:absolute;bottom:0;left:18px;right:18px;height:1px;background:rgba(255,255,255,.06)}
+.sector-name{font-size:1rem;font-weight:600;color:#fff}
+.sector-signal{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.score-area{position:absolute;top:12px;right:16px}
+.score-ring{width:52px;height:52px;position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring .track{fill:none;stroke:rgba(255,255,255,.06);stroke-width:5}
+.score-ring .fill{fill:none;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1)}
+.score-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;color:#fff}
+.card-body{padding:12px 18px 14px;display:grid;gap:8px}
+.metric-row{display:flex;align-items:center;gap:10px}
+.metric-label{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);width:64px;flex-shrink:0}
+.metric-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.metric-bar-fill{height:100%;border-radius:3px}
+.metric-value{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--text);width:32px;text-align:right;flex-shrink:0}
+.surge-badge{display:inline-flex;align-items:center;gap:4px;font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:20px;margin-top:6px}
+.surge-badge.bullish{background:rgba(0,255,136,.1);color:#23c56e;border:1px solid rgba(0,255,136,.2)}
+.surge-badge.neutral{background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--border)}
+.adr-chip{font-size:.58rem;color:var(--muted);font-family:'Space Mono',monospace}
+.summary-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:20px 40px}
+.summary-cell{background:var(--surface);padding:14px 20px;text-align:center}
+.summary-cell .sv{font-family:'Space Mono',monospace;font-size:1.5rem;font-weight:700;color:#fff;line-height:1}
+.summary-cell .sl{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.sv.bull{color:#23c56e}.sv.bear{color:#e62a3c}.sv.neut{color:#ffd166}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:1000;opacity:0;pointer-events:none;transition:opacity .25s}
+.drawer-overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;width:420px;max-width:100vw;height:100vh;background:var(--surface);border-left:1px solid var(--border);overflow-y:auto;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:1001}
+.drawer.open{transform:translateX(0)}
+.drawer-header{padding:24px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);z-index:2;display:flex;justify-content:space-between;align-items:flex-start}
+.drawer-close{background:none;border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:color .15s;flex-shrink:0}
+.drawer-close:hover{color:var(--text)}
+.drawer-body{padding:20px 24px}
+.drawer-sector-title{font-size:1.4rem;font-weight:800;color:#fff}
+.drawer-date{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:4px}
+.drawer-score-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:20px 0}
+.score-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px 12px;text-align:center}
+.score-box .sb-value{font-family:'Space Mono',monospace;font-size:1.3rem;font-weight:700;color:#fff;line-height:1}
+.score-box .sb-label{font-family:'Space Mono',monospace;font-size:.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.stock-table-title{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+thead th{font-family:'Space Mono',monospace;font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--border)}
+tbody tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .12s}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+tbody td{padding:8px;font-family:'Space Mono',monospace;font-size:.6rem}
+.tick{font-weight:700;color:var(--text)}
+.pass-dot{display:inline-block;width:7px;height:7px;border-radius:50%}
+.pass-dot.yes{background:#23c56e}.pass-dot.no{background:#e62a3c}
+@media(max-width:600px){header,.legend-strip,.metric-tabs,.heatmap-wrap{padding-left:20px;padding-right:20px}.summary-bar{margin:16px 20px;grid-template-columns:1fr 1fr}.drawer{width:100vw}}
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo-area">
     <h1>NSE Sector <span>Pulse</span></h1>
     <p>Minervini SEPA × Qullamaggie VCP — Weekly Scan</p>
   </div>
-  <div class="scan-meta" id="scanMeta">
-    <div><span class="pulse"></span> LIVE DATA</div>
+  <div class="scan-meta">
+    <div><span class="pulse"></span>LIVE DATA</div>
     <div id="scanDate">—</div>
     <div id="stockCount">—</div>
   </div>
 </header>
-
-<!-- Legend -->
 <div class="legend-strip">
   <span class="legend-label">Sentiment</span>
   <div class="legend-bar">
@@ -599,405 +104,151 @@
     <div class="legend-swatch" style="background:#00ff88"></div>
     <span class="legend-endpoints">BULL</span>
   </div>
-  <span class="legend-sep"></span>
-  <span class="legend-label" style="margin-left:auto">Score based on Minervini 40% · Qullamaggie 40% · Volume 20%</span>
+  <span style="flex:1"></span>
+  <span class="legend-label">Score = Minervini 40% · Qullamaggie 40% · Volume 20%</span>
 </div>
-
-<!-- Metric Tabs -->
 <div class="metric-tabs">
-  <button class="tab active" onclick="setMetric('composite')">Composite</button>
-  <button class="tab" onclick="setMetric('minervini')">Minervini</button>
-  <button class="tab" onclick="setMetric('qullamaggie')">Qullamaggie</button>
-  <button class="tab" onclick="setMetric('volume')">Vol Surge</button>
+  <button class="tab active" onclick="setMetric('composite',this)">Composite</button>
+  <button class="tab" onclick="setMetric('minervini',this)">Minervini</button>
+  <button class="tab" onclick="setMetric('qullamaggie',this)">Qullamaggie</button>
+  <button class="tab" onclick="setMetric('volume',this)">Vol Surge</button>
 </div>
-
-<!-- Heatmap -->
-<div class="heatmap-wrap">
-  <div class="heatmap-grid" id="heatmapGrid"></div>
-</div>
-
-<!-- Summary Bar -->
+<div class="heatmap-wrap"><div class="heatmap-grid" id="heatmapGrid"></div></div>
 <div class="summary-bar">
-  <div class="summary-cell">
-    <div class="sv bull" id="sumBull">—</div>
-    <div class="sl">Bullish Sectors</div>
-  </div>
-  <div class="summary-cell">
-    <div class="sv neut" id="sumNeut">—</div>
-    <div class="sl">Neutral</div>
-  </div>
-  <div class="summary-cell">
-    <div class="sv bear" id="sumBear">—</div>
-    <div class="sl">Bearish Sectors</div>
-  </div>
-  <div class="summary-cell">
-    <div class="sv" id="sumAvg">—</div>
-    <div class="sl">Market Pulse Score</div>
-  </div>
+  <div class="summary-cell"><div class="sv bull" id="sumBull">—</div><div class="sl">Bullish Sectors</div></div>
+  <div class="summary-cell"><div class="sv neut" id="sumNeut">—</div><div class="sl">Neutral</div></div>
+  <div class="summary-cell"><div class="sv bear" id="sumBear">—</div><div class="sl">Bearish Sectors</div></div>
+  <div class="summary-cell"><div class="sv" id="sumAvg">—</div><div class="sl">Market Pulse Score</div></div>
 </div>
-
-<!-- Detail Drawer -->
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-header">
-    <div>
-      <div class="drawer-sector-title" id="drawerTitle">—</div>
-      <div class="drawer-date" id="drawerDate">—</div>
-    </div>
+    <div><div class="drawer-sector-title" id="drawerTitle">—</div><div class="drawer-date" id="drawerDate">—</div></div>
     <button class="drawer-close" onclick="closeDrawer()">✕</button>
   </div>
   <div class="drawer-body">
     <div class="drawer-score-grid" id="drawerScoreGrid"></div>
     <div class="stock-table-title">Stock Breakdown</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Ticker</th>
-          <th>Minervini</th>
-          <th>Quilamag</th>
-          <th>ADR%</th>
-          <th>RS 3M</th>
-          <th>Vol↑</th>
-        </tr>
-      </thead>
-      <tbody id="drawerTable"></tbody>
-    </table>
+    <table><thead><tr><th>Ticker</th><th>Minervini</th><th>Quillamag</th><th>ADR%</th><th>RS 3M</th><th>Vol↑</th></tr></thead>
+    <tbody id="drawerTable"></tbody></table>
   </div>
 </div>
-
 <script>
-// ── EMBEDDED SCAN DATA (replaced by generate_heatmap.py in CI) ──
-const SCAN_DATA = {
-  "scan_date": "Demo Data — Run scanner.py to populate live data",
-  "sectors": {
-    "IT": {
-      "sector": "IT", "total_stocks": 10,
-      "minervini_pct": 70, "qullamaggie_pct": 60, "surge_pct": 40,
-      "avg_adr": 3.4, "bullish_score": 65,
-      "stocks": [
-        {"ticker":"TCS.NS","minervini_score":83,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":2.8,"rs_return":14.2,"volume_surge":{"bullish_surge":true,"surge_ratio":1.9,"price_change_5d":2.1}},
-        {"ticker":"INFY.NS","minervini_score":67,"qullamaggie_score":50,"minervini_passed":true,"qullamaggie_passed":false,"adr":2.5,"rs_return":8.1,"volume_surge":{"bullish_surge":false,"surge_ratio":1.1,"price_change_5d":-0.5}},
-        {"ticker":"WIPRO.NS","minervini_score":50,"qullamaggie_score":33,"minervini_passed":false,"qullamaggie_passed":false,"adr":2.1,"rs_return":3.2,"volume_surge":{"bullish_surge":false,"surge_ratio":0.9,"price_change_5d":0.8}},
-        {"ticker":"HCLTECH.NS","minervini_score":83,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.8,"rs_return":22.1,"volume_surge":{"bullish_surge":true,"surge_ratio":2.1,"price_change_5d":3.4}},
-        {"ticker":"TECHM.NS","minervini_score":67,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.2,"rs_return":16.5,"volume_surge":{"bullish_surge":true,"surge_ratio":1.7,"price_change_5d":1.9}}
-      ]
-    },
-    "Banking": {
-      "sector": "Banking", "total_stocks": 10,
-      "minervini_pct": 40, "qullamaggie_pct": 30, "surge_pct": 20,
-      "avg_adr": 2.1, "bullish_score": 35,
-      "stocks": [
-        {"ticker":"HDFCBANK.NS","minervini_score":67,"qullamaggie_score":50,"minervini_passed":true,"qullamaggie_passed":false,"adr":1.9,"rs_return":5.2,"volume_surge":{"bullish_surge":false,"surge_ratio":1.1,"price_change_5d":0.3}},
-        {"ticker":"ICICIBANK.NS","minervini_score":67,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":2.4,"rs_return":12.1,"volume_surge":{"bullish_surge":true,"surge_ratio":1.6,"price_change_5d":2.0}},
-        {"ticker":"KOTAKBANK.NS","minervini_score":33,"qullamaggie_score":33,"minervini_passed":false,"qullamaggie_passed":false,"adr":1.8,"rs_return":-2.1,"volume_surge":{"bullish_surge":false,"surge_ratio":0.8,"price_change_5d":-1.2}}
-      ]
-    },
-    "Pharma": {
-      "sector": "Pharma", "total_stocks": 10,
-      "minervini_pct": 80, "qullamaggie_pct": 70, "surge_pct": 50,
-      "avg_adr": 4.2, "bullish_score": 76,
-      "stocks": [
-        {"ticker":"SUNPHARMA.NS","minervini_score":100,"qullamaggie_score":100,"minervini_passed":true,"qullamaggie_passed":true,"adr":4.9,"rs_return":31.2,"volume_surge":{"bullish_surge":true,"surge_ratio":2.4,"price_change_5d":4.1}},
-        {"ticker":"DRREDDY.NS","minervini_score":83,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.8,"rs_return":22.5,"volume_surge":{"bullish_surge":true,"surge_ratio":1.8,"price_change_5d":2.7}}
-      ]
-    },
-    "Auto": {
-      "sector": "Auto", "total_stocks": 10,
-      "minervini_pct": 60, "qullamaggie_pct": 50, "surge_pct": 30,
-      "avg_adr": 3.1, "bullish_score": 56,
-      "stocks": [
-        {"ticker":"MARUTI.NS","minervini_score":83,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":2.9,"rs_return":17.3,"volume_surge":{"bullish_surge":false,"surge_ratio":1.2,"price_change_5d":1.1}},
-        {"ticker":"TATAMOTORS.NS","minervini_score":67,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.5,"rs_return":14.8,"volume_surge":{"bullish_surge":true,"surge_ratio":1.9,"price_change_5d":3.2}}
-      ]
-    },
-    "FMCG": {
-      "sector": "FMCG", "total_stocks": 10,
-      "minervini_pct": 20, "qullamaggie_pct": 20, "surge_pct": 10,
-      "avg_adr": 1.5, "bullish_score": 20,
-      "stocks": [
-        {"ticker":"HINDUNILVR.NS","minervini_score":33,"qullamaggie_score":17,"minervini_passed":false,"qullamaggie_passed":false,"adr":1.4,"rs_return":-5.1,"volume_surge":{"bullish_surge":false,"surge_ratio":0.7,"price_change_5d":-0.9}},
-        {"ticker":"ITC.NS","minervini_score":50,"qullamaggie_score":33,"minervini_passed":false,"qullamaggie_passed":false,"adr":1.7,"rs_return":2.3,"volume_surge":{"bullish_surge":false,"surge_ratio":1.1,"price_change_5d":0.2}}
-      ]
-    },
-    "Metals": {
-      "sector": "Metals", "total_stocks": 10,
-      "minervini_pct": 30, "qullamaggie_pct": 20, "surge_pct": 10,
-      "avg_adr": 2.8, "bullish_score": 26,
-      "stocks": [
-        {"ticker":"TATASTEEL.NS","minervini_score":33,"qullamaggie_score":33,"minervini_passed":false,"qullamaggie_passed":false,"adr":2.6,"rs_return":-8.2,"volume_surge":{"bullish_surge":false,"surge_ratio":0.9,"price_change_5d":-1.5}},
-        {"ticker":"HINDALCO.NS","minervini_score":50,"qullamaggie_score":33,"minervini_passed":false,"qullamaggie_passed":false,"adr":2.9,"rs_return":-3.1,"volume_surge":{"bullish_surge":false,"surge_ratio":1.0,"price_change_5d":-0.5}}
-      ]
-    },
-    "Energy": {
-      "sector": "Energy", "total_stocks": 10,
-      "minervini_pct": 50, "qullamaggie_pct": 40, "surge_pct": 30,
-      "avg_adr": 2.6, "bullish_score": 46,
-      "stocks": [
-        {"ticker":"RELIANCE.NS","minervini_score":67,"qullamaggie_score":50,"minervini_passed":true,"qullamaggie_passed":false,"adr":2.4,"rs_return":9.1,"volume_surge":{"bullish_surge":true,"surge_ratio":1.6,"price_change_5d":1.8}},
-        {"ticker":"ADANIGREEN.NS","minervini_score":83,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.9,"rs_return":28.4,"volume_surge":{"bullish_surge":true,"surge_ratio":2.0,"price_change_5d":3.8}}
-      ]
-    },
-    "Realty": {
-      "sector": "Realty", "total_stocks": 10,
-      "minervini_pct": 70, "qullamaggie_pct": 60, "surge_pct": 50,
-      "avg_adr": 4.8, "bullish_score": 67,
-      "stocks": [
-        {"ticker":"DLF.NS","minervini_score":83,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":4.5,"rs_return":24.1,"volume_surge":{"bullish_surge":true,"surge_ratio":2.2,"price_change_5d":4.2}},
-        {"ticker":"GODREJPROP.NS","minervini_score":100,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":5.1,"rs_return":35.2,"volume_surge":{"bullish_surge":true,"surge_ratio":2.5,"price_change_5d":5.1}}
-      ]
-    },
-    "Chemicals": {
-      "sector": "Chemicals", "total_stocks": 10,
-      "minervini_pct": 50, "qullamaggie_pct": 40, "surge_pct": 30,
-      "avg_adr": 3.3, "bullish_score": 45,
-      "stocks": [
-        {"ticker":"PIDILITIND.NS","minervini_score":83,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.1,"rs_return":14.8,"volume_surge":{"bullish_surge":false,"surge_ratio":1.3,"price_change_5d":1.2}},
-        {"ticker":"SRF.NS","minervini_score":50,"qullamaggie_score":33,"minervini_passed":false,"qullamaggie_passed":false,"adr":3.5,"rs_return":5.4,"volume_surge":{"bullish_surge":true,"surge_ratio":1.7,"price_change_5d":2.3}}
-      ]
-    },
-    "Capital Goods": {
-      "sector": "Capital Goods", "total_stocks": 10,
-      "minervini_pct": 90, "qullamaggie_pct": 80, "surge_pct": 60,
-      "avg_adr": 4.1, "bullish_score": 86,
-      "stocks": [
-        {"ticker":"LT.NS","minervini_score":100,"qullamaggie_score":100,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.8,"rs_return":28.5,"volume_surge":{"bullish_surge":true,"surge_ratio":2.3,"price_change_5d":3.9}},
-        {"ticker":"SIEMENS.NS","minervini_score":100,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":4.2,"rs_return":32.1,"volume_surge":{"bullish_surge":true,"surge_ratio":2.6,"price_change_5d":4.8}},
-        {"ticker":"ABB.NS","minervini_score":83,"qullamaggie_score":83,"minervini_passed":true,"qullamaggie_passed":true,"adr":4.5,"rs_return":29.3,"volume_surge":{"bullish_surge":true,"surge_ratio":2.1,"price_change_5d":3.2}}
-      ]
-    },
-    "Consumer Durables": {
-      "sector": "Consumer Durables", "total_stocks": 10,
-      "minervini_pct": 60, "qullamaggie_pct": 50, "surge_pct": 40,
-      "avg_adr": 3.6, "bullish_score": 57,
-      "stocks": [
-        {"ticker":"TITAN.NS","minervini_score":83,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.3,"rs_return":18.2,"volume_surge":{"bullish_surge":true,"surge_ratio":1.8,"price_change_5d":2.6}},
-        {"ticker":"HAVELLS.NS","minervini_score":67,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.8,"rs_return":15.7,"volume_surge":{"bullish_surge":true,"surge_ratio":1.9,"price_change_5d":2.9}}
-      ]
-    },
-    "Financial Services": {
-      "sector": "Financial Services", "total_stocks": 10,
-      "minervini_pct": 55, "qullamaggie_pct": 45, "surge_pct": 35,
-      "avg_adr": 3.0, "bullish_score": 51,
-      "stocks": [
-        {"ticker":"BAJFINANCE.NS","minervini_score":83,"qullamaggie_score":67,"minervini_passed":true,"qullamaggie_passed":true,"adr":3.2,"rs_return":19.4,"volume_surge":{"bullish_surge":true,"surge_ratio":1.7,"price_change_5d":2.2}},
-        {"ticker":"BAJAJFINSV.NS","minervini_score":67,"qullamaggie_score":50,"minervini_passed":true,"qullamaggie_passed":false,"adr":2.8,"rs_return":12.1,"volume_surge":{"bullish_surge":false,"surge_ratio":1.2,"price_change_5d":0.9}}
-      ]
-    }
-  }
-};
-
-// ── STATE ──
+const SCAN_DATA = {"scan_date": "2026-02-28 15:19 EST", "sectors": {"IT": {"sector": "IT", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 0, "volume_surge_count": 6, "bullish_surge_count": 0, "stocks": [{"ticker": "TCS.NS", "minervini_score": 16.7, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.72, "rs_return": -14.3, "volume_surge": {"surge_ratio": 1.39, "surge_detected": false, "price_change_5d": -1.82, "bullish_surge": false}}, {"ticker": "INFY.NS", "minervini_score": 16.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.2, "rs_return": -16.87, "volume_surge": {"surge_ratio": 1.65, "surge_detected": true, "price_change_5d": -3.92, "bullish_surge": false}}, {"ticker": "WIPRO.NS", "minervini_score": 0.0, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.69, "rs_return": -17.63, "volume_surge": {"surge_ratio": 1.29, "surge_detected": false, "price_change_5d": -4.24, "bullish_surge": false}}, {"ticker": "HCLTECH.NS", "minervini_score": 33.3, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.93, "rs_return": -14.84, "volume_surge": {"surge_ratio": 1.93, "surge_detected": true, "price_change_5d": -3.3, "bullish_surge": false}}, {"ticker": "TECHM.NS", "minervini_score": 33.3, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.36, "rs_return": -11.23, "volume_surge": {"surge_ratio": 1.56, "surge_detected": true, "price_change_5d": -6.8, "bullish_surge": false}}, {"ticker": "LTIM.NS", "minervini_score": 50.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.32, "rs_return": -27.48, "volume_surge": {"surge_ratio": 1.39, "surge_detected": false, "price_change_5d": -8.74, "bullish_surge": false}}, {"ticker": "MPHASIS.NS", "minervini_score": 33.3, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.31, "rs_return": -18.92, "volume_surge": {"surge_ratio": 1.49, "surge_detected": false, "price_change_5d": -3.26, "bullish_surge": false}}, {"ticker": "COFORGE.NS", "minervini_score": 0.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 4.01, "rs_return": -37.53, "volume_surge": {"surge_ratio": 1.9, "surge_detected": true, "price_change_5d": -11.55, "bullish_surge": false}}, {"ticker": "PERSISTENT.NS", "minervini_score": 33.3, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.93, "rs_return": -25.85, "volume_surge": {"surge_ratio": 2.23, "surge_detected": true, "price_change_5d": -7.05, "bullish_surge": false}}, {"ticker": "KPITTECH.NS", "minervini_score": 0.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.95, "rs_return": -38.57, "volume_surge": {"surge_ratio": 2.42, "surge_detected": true, "price_change_5d": -7.7, "bullish_surge": false}}], "avg_minervini_score": 21.7, "avg_qullamaggie_score": 11.7, "avg_adr": 3.34, "minervini_pct": 0.0, "qullamaggie_pct": 0.0, "surge_pct": 0.0, "bullish_score": 13.4}, "Banking": {"sector": "Banking", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 1, "volume_surge_count": 2, "bullish_surge_count": 1, "stocks": [{"ticker": "HDFCBANK.NS", "minervini_score": 0.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.68, "rs_return": -11.41, "volume_surge": {"surge_ratio": 1.15, "surge_detected": false, "price_change_5d": -2.64, "bullish_surge": false}}, {"ticker": "ICICIBANK.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.55, "rs_return": -0.81, "volume_surge": {"surge_ratio": 1.33, "surge_detected": false, "price_change_5d": -1.12, "bullish_surge": false}}, {"ticker": "KOTAKBANK.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.96, "rs_return": -3.33, "volume_surge": {"surge_ratio": 0.91, "surge_detected": false, "price_change_5d": -1.46, "bullish_surge": false}}, {"ticker": "AXISBANK.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.93, "rs_return": 8.48, "volume_surge": {"surge_ratio": 1.09, "surge_detected": false, "price_change_5d": 1.14, "bullish_surge": false}}, {"ticker": "SBIN.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.17, "rs_return": 23.49, "volume_surge": {"surge_ratio": 1.26, "surge_detected": false, "price_change_5d": -1.18, "bullish_surge": false}}, {"ticker": "INDUSINDBK.NS", "minervini_score": 50.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.42, "rs_return": 12.94, "volume_surge": {"surge_ratio": 1.0, "surge_detected": false, "price_change_5d": 3.32, "bullish_surge": false}}, {"ticker": "BANDHANBNK.NS", "minervini_score": 33.3, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.97, "rs_return": 21.28, "volume_surge": {"surge_ratio": 1.59, "surge_detected": true, "price_change_5d": 6.2, "bullish_surge": true}}, {"ticker": "FEDERALBNK.NS", "minervini_score": 66.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 2.28, "rs_return": 16.86, "volume_surge": {"surge_ratio": 0.84, "surge_detected": false, "price_change_5d": 2.48, "bullish_surge": false}}, {"ticker": "IDFCFIRSTB.NS", "minervini_score": 50.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.13, "rs_return": -8.96, "volume_surge": {"surge_ratio": 5.25, "surge_detected": true, "price_change_5d": -12.01, "bullish_surge": false}}, {"ticker": "RBLBANK.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.76, "rs_return": 4.14, "volume_surge": {"surge_ratio": 1.02, "surge_detected": false, "price_change_5d": -2.81, "bullish_surge": false}}], "avg_minervini_score": 41.7, "avg_qullamaggie_score": 36.7, "avg_adr": 2.29, "minervini_pct": 0.0, "qullamaggie_pct": 10.0, "surge_pct": 10.0, "bullish_score": 33.4}, "Pharma": {"sector": "Pharma", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 0, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "SUNPHARMA.NS", "minervini_score": 50.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.51, "rs_return": -3.27, "volume_surge": {"surge_ratio": 0.9, "surge_detected": false, "price_change_5d": 0.73, "bullish_surge": false}}, {"ticker": "DRREDDY.NS", "minervini_score": 33.3, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.04, "rs_return": 2.08, "volume_surge": {"surge_ratio": 1.45, "surge_detected": false, "price_change_5d": 0.46, "bullish_surge": false}}, {"ticker": "CIPLA.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.81, "rs_return": -11.48, "volume_surge": {"surge_ratio": 1.14, "surge_detected": false, "price_change_5d": 0.53, "bullish_surge": false}}, {"ticker": "DIVISLAB.NS", "minervini_score": 33.3, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.75, "rs_return": -0.22, "volume_surge": {"surge_ratio": 0.71, "surge_detected": false, "price_change_5d": 1.87, "bullish_surge": false}}, {"ticker": "BIOCON.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.45, "rs_return": -1.19, "volume_surge": {"surge_ratio": 1.29, "surge_detected": false, "price_change_5d": 1.52, "bullish_surge": false}}, {"ticker": "LUPIN.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.04, "rs_return": 10.57, "volume_surge": {"surge_ratio": 1.21, "surge_detected": false, "price_change_5d": 3.72, "bullish_surge": false}}, {"ticker": "AUROPHARMA.NS", "minervini_score": 33.3, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.64, "rs_return": -0.51, "volume_surge": {"surge_ratio": 1.19, "surge_detected": false, "price_change_5d": 5.32, "bullish_surge": false}}, {"ticker": "TORNTPHARM.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.42, "rs_return": 16.75, "volume_surge": {"surge_ratio": 1.48, "surge_detected": false, "price_change_5d": 2.16, "bullish_surge": false}}, {"ticker": "ALKEM.NS", "minervini_score": 66.7, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.6, "rs_return": -0.0, "volume_surge": {"surge_ratio": 1.23, "surge_detected": false, "price_change_5d": 4.59, "bullish_surge": false}}, {"ticker": "GLENMARK.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.64, "rs_return": 10.04, "volume_surge": {"surge_ratio": 0.87, "surge_detected": false, "price_change_5d": 4.58, "bullish_surge": false}}], "avg_minervini_score": 50.0, "avg_qullamaggie_score": 23.3, "avg_adr": 2.39, "minervini_pct": 0.0, "qullamaggie_pct": 0.0, "surge_pct": 0.0, "bullish_score": 29.3}, "Auto": {"sector": "Auto", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 2, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "MARUTI.NS", "minervini_score": 50.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.02, "rs_return": -7.7, "volume_surge": {"surge_ratio": 0.89, "surge_detected": false, "price_change_5d": -0.8, "bullish_surge": false}}, {"ticker": "M&M.NS", "minervini_score": 50.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.47, "rs_return": -9.2, "volume_surge": {"surge_ratio": 1.08, "surge_detected": false, "price_change_5d": -0.45, "bullish_surge": false}}, {"ticker": "BAJAJ-AUTO.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.07, "rs_return": 9.64, "volume_surge": {"surge_ratio": 0.78, "surge_detected": false, "price_change_5d": 1.69, "bullish_surge": false}}, {"ticker": "HEROMOTOCO.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.68, "rs_return": -7.53, "volume_surge": {"surge_ratio": 0.97, "surge_detected": false, "price_change_5d": 4.48, "bullish_surge": false}}, {"ticker": "EICHERMOT.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.34, "rs_return": 12.42, "volume_surge": {"surge_ratio": 1.05, "surge_detected": false, "price_change_5d": 0.93, "bullish_surge": false}}, {"ticker": "TVSMOTOR.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.18, "rs_return": 5.68, "volume_surge": {"surge_ratio": 1.23, "surge_detected": false, "price_change_5d": 1.4, "bullish_surge": false}}, {"ticker": "ASHOKLEY.NS", "minervini_score": 66.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 2.72, "rs_return": 31.69, "volume_surge": {"surge_ratio": 0.68, "surge_detected": false, "price_change_5d": 1.08, "bullish_surge": false}}, {"ticker": "BALKRISIND.NS", "minervini_score": 16.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 4.12, "rs_return": 3.82, "volume_surge": {"surge_ratio": 1.28, "surge_detected": false, "price_change_5d": -4.45, "bullish_surge": false}}, {"ticker": "MOTHERSON.NS", "minervini_score": 66.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.07, "rs_return": 14.41, "volume_surge": {"surge_ratio": 0.89, "surge_detected": false, "price_change_5d": 3.03, "bullish_surge": false}}], "avg_minervini_score": 57.4, "avg_qullamaggie_score": 40.8, "avg_adr": 2.63, "minervini_pct": 0.0, "qullamaggie_pct": 22.2, "surge_pct": 0.0, "bullish_score": 39.3}, "FMCG": {"sector": "FMCG", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 0, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "HINDUNILVR.NS", "minervini_score": 33.3, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.13, "rs_return": -5.13, "volume_surge": {"surge_ratio": 1.22, "surge_detected": false, "price_change_5d": 1.02, "bullish_surge": false}}, {"ticker": "ITC.NS", "minervini_score": 0.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.2, "rs_return": -20.8, "volume_surge": {"surge_ratio": 0.46, "surge_detected": false, "price_change_5d": -4.1, "bullish_surge": false}}, {"ticker": "NESTLEIND.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.05, "rs_return": 3.02, "volume_surge": {"surge_ratio": 1.01, "surge_detected": false, "price_change_5d": -0.16, "bullish_surge": false}}, {"ticker": "BRITANNIA.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.02, "rs_return": 3.25, "volume_surge": {"surge_ratio": 0.84, "surge_detected": false, "price_change_5d": -1.57, "bullish_surge": false}}, {"ticker": "DABUR.NS", "minervini_score": 50.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.03, "rs_return": 0.63, "volume_surge": {"surge_ratio": 0.99, "surge_detected": false, "price_change_5d": 1.73, "bullish_surge": false}}, {"ticker": "MARICO.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.96, "rs_return": 9.69, "volume_surge": {"surge_ratio": 0.95, "surge_detected": false, "price_change_5d": 0.06, "bullish_surge": false}}, {"ticker": "COLPAL.NS", "minervini_score": 16.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.2, "rs_return": 4.72, "volume_surge": {"surge_ratio": 1.38, "surge_detected": false, "price_change_5d": 2.58, "bullish_surge": false}}, {"ticker": "GODREJCP.NS", "minervini_score": 33.3, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.08, "rs_return": 8.27, "volume_surge": {"surge_ratio": 0.91, "surge_detected": false, "price_change_5d": 0.96, "bullish_surge": false}}, {"ticker": "EMAMILTD.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.66, "rs_return": -10.95, "volume_surge": {"surge_ratio": 0.66, "surge_detected": false, "price_change_5d": -3.54, "bullish_surge": false}}, {"ticker": "VBL.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.87, "rs_return": -6.76, "volume_surge": {"surge_ratio": 0.61, "surge_detected": false, "price_change_5d": -0.54, "bullish_surge": false}}], "avg_minervini_score": 35.0, "avg_qullamaggie_score": 28.3, "avg_adr": 2.22, "minervini_pct": 0.0, "qullamaggie_pct": 0.0, "surge_pct": 0.0, "bullish_score": 25.3}, "Metals": {"sector": "Metals", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 6, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "TATASTEEL.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.73, "rs_return": 25.91, "volume_surge": {"surge_ratio": 0.96, "surge_detected": false, "price_change_5d": 1.91, "bullish_surge": false}}, {"ticker": "HINDALCO.NS", "minervini_score": 50.0, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 2.58, "rs_return": 14.05, "volume_surge": {"surge_ratio": 0.77, "surge_detected": false, "price_change_5d": -1.18, "bullish_surge": false}}, {"ticker": "JSWSTEEL.NS", "minervini_score": 66.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.84, "rs_return": 8.24, "volume_surge": {"surge_ratio": 0.94, "surge_detected": false, "price_change_5d": 2.34, "bullish_surge": false}}, {"ticker": "SAIL.NS", "minervini_score": 66.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.35, "rs_return": 22.7, "volume_surge": {"surge_ratio": 1.45, "surge_detected": false, "price_change_5d": 4.38, "bullish_surge": false}}, {"ticker": "VEDL.NS", "minervini_score": 66.7, "qullamaggie_score": 83.3, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.42, "rs_return": 34.71, "volume_surge": {"surge_ratio": 0.89, "surge_detected": false, "price_change_5d": 5.27, "bullish_surge": false}}, {"ticker": "COALINDIA.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.3, "rs_return": 14.93, "volume_surge": {"surge_ratio": 0.95, "surge_detected": false, "price_change_5d": 1.68, "bullish_surge": false}}, {"ticker": "NMDC.NS", "minervini_score": 66.7, "qullamaggie_score": 83.3, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.02, "rs_return": 11.72, "volume_surge": {"surge_ratio": 0.82, "surge_detected": false, "price_change_5d": 2.01, "bullish_surge": false}}, {"ticker": "MOIL.NS", "minervini_score": 0.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.85, "rs_return": -6.11, "volume_surge": {"surge_ratio": 0.37, "surge_detected": false, "price_change_5d": 2.93, "bullish_surge": false}}, {"ticker": "NATIONALUM.NS", "minervini_score": 66.7, "qullamaggie_score": 83.3, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.42, "rs_return": 36.1, "volume_surge": {"surge_ratio": 0.54, "surge_detected": false, "price_change_5d": 3.93, "bullish_surge": false}}, {"ticker": "HINDCOPPER.NS", "minervini_score": 66.7, "qullamaggie_score": 83.3, "minervini_passed": false, "qullamaggie_passed": true, "adr": 4.76, "rs_return": 67.17, "volume_surge": {"surge_ratio": 0.26, "surge_detected": false, "price_change_5d": -0.48, "bullish_surge": false}}], "avg_minervini_score": 58.4, "avg_qullamaggie_score": 65.0, "avg_adr": 3.03, "minervini_pct": 0.0, "qullamaggie_pct": 60.0, "surge_pct": 0.0, "bullish_score": 49.4}, "Energy": {"sector": "Energy", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 3, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "RELIANCE.NS", "minervini_score": 33.3, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.9, "rs_return": -11.0, "volume_surge": {"surge_ratio": 1.06, "surge_detected": false, "price_change_5d": -1.8, "bullish_surge": false}}, {"ticker": "ONGC.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.52, "rs_return": 16.93, "volume_surge": {"surge_ratio": 0.89, "surge_detected": false, "price_change_5d": 0.38, "bullish_surge": false}}, {"ticker": "BPCL.NS", "minervini_score": 66.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 2.45, "rs_return": 11.94, "volume_surge": {"surge_ratio": 1.14, "surge_detected": false, "price_change_5d": 5.21, "bullish_surge": false}}, {"ticker": "IOC.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.41, "rs_return": 18.56, "volume_surge": {"surge_ratio": 1.47, "surge_detected": false, "price_change_5d": 7.87, "bullish_surge": false}}, {"ticker": "GAIL.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.95, "rs_return": -0.34, "volume_surge": {"surge_ratio": 1.06, "surge_detected": false, "price_change_5d": 0.63, "bullish_surge": false}}, {"ticker": "POWERGRID.NS", "minervini_score": 16.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 2.62, "rs_return": 12.0, "volume_surge": {"surge_ratio": 1.08, "surge_detected": false, "price_change_5d": -0.1, "bullish_surge": false}}, {"ticker": "NTPC.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.98, "rs_return": 17.63, "volume_surge": {"surge_ratio": 1.36, "surge_detected": false, "price_change_5d": 2.4, "bullish_surge": false}}, {"ticker": "ADANIGREEN.NS", "minervini_score": 16.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.3, "rs_return": -8.87, "volume_surge": {"surge_ratio": 0.43, "surge_detected": false, "price_change_5d": -2.16, "bullish_surge": false}}, {"ticker": "TATAPOWER.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.06, "rs_return": -3.13, "volume_surge": {"surge_ratio": 0.85, "surge_detected": false, "price_change_5d": -0.12, "bullish_surge": false}}, {"ticker": "CESC.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.83, "rs_return": -8.26, "volume_surge": {"surge_ratio": 0.93, "surge_detected": false, "price_change_5d": 1.75, "bullish_surge": false}}], "avg_minervini_score": 38.4, "avg_qullamaggie_score": 48.3, "avg_adr": 2.4, "minervini_pct": 0.0, "qullamaggie_pct": 30.0, "surge_pct": 0.0, "bullish_score": 34.7}, "Realty": {"sector": "Realty", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 4, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "DLF.NS", "minervini_score": 0.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.51, "rs_return": -15.25, "volume_surge": {"surge_ratio": 0.86, "surge_detected": false, "price_change_5d": -4.04, "bullish_surge": false}}, {"ticker": "GODREJPROP.NS", "minervini_score": 0.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.68, "rs_return": -17.43, "volume_surge": {"surge_ratio": 0.95, "surge_detected": false, "price_change_5d": -5.19, "bullish_surge": false}}, {"ticker": "OBEROIRLTY.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.4, "rs_return": -5.81, "volume_surge": {"surge_ratio": 0.75, "surge_detected": false, "price_change_5d": -0.03, "bullish_surge": false}}, {"ticker": "PRESTIGE.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.16, "rs_return": -16.04, "volume_surge": {"surge_ratio": 0.95, "surge_detected": false, "price_change_5d": -6.32, "bullish_surge": false}}, {"ticker": "BRIGADE.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.19, "rs_return": -22.78, "volume_surge": {"surge_ratio": 1.13, "surge_detected": false, "price_change_5d": -6.29, "bullish_surge": false}}, {"ticker": "SOBHA.NS", "minervini_score": 33.3, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.24, "rs_return": -9.25, "volume_surge": {"surge_ratio": 0.84, "surge_detected": false, "price_change_5d": -7.85, "bullish_surge": false}}, {"ticker": "PHOENIXLTD.NS", "minervini_score": 50.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.68, "rs_return": -4.5, "volume_surge": {"surge_ratio": 0.9, "surge_detected": false, "price_change_5d": -4.3, "bullish_surge": false}}, {"ticker": "MAHLIFE.NS", "minervini_score": 33.3, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.58, "rs_return": -15.2, "volume_surge": {"surge_ratio": 1.04, "surge_detected": false, "price_change_5d": -3.13, "bullish_surge": false}}, {"ticker": "SUNTECK.NS", "minervini_score": 16.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.01, "rs_return": -4.55, "volume_surge": {"surge_ratio": 0.36, "surge_detected": false, "price_change_5d": -1.91, "bullish_surge": false}}, {"ticker": "LODHA.NS", "minervini_score": 0.0, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.27, "rs_return": -12.4, "volume_surge": {"surge_ratio": 0.76, "surge_detected": false, "price_change_5d": -7.74, "bullish_surge": false}}], "avg_minervini_score": 15.0, "avg_qullamaggie_score": 46.7, "avg_adr": 3.07, "minervini_pct": 0.0, "qullamaggie_pct": 40.0, "surge_pct": 0.0, "bullish_score": 24.7}, "Chemicals": {"sector": "Chemicals", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 2, "volume_surge_count": 0, "bullish_surge_count": 0, "stocks": [{"ticker": "PIDILITIND.NS", "minervini_score": 16.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.84, "rs_return": 1.59, "volume_surge": {"surge_ratio": 1.3, "surge_detected": false, "price_change_5d": 1.85, "bullish_surge": false}}, {"ticker": "SRF.NS", "minervini_score": 0.0, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.74, "rs_return": -12.18, "volume_surge": {"surge_ratio": 1.18, "surge_detected": false, "price_change_5d": -4.72, "bullish_surge": false}}, {"ticker": "AARTIIND.NS", "minervini_score": 50.0, "qullamaggie_score": 83.3, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.57, "rs_return": 17.53, "volume_surge": {"surge_ratio": 0.51, "surge_detected": false, "price_change_5d": -0.78, "bullish_surge": false}}, {"ticker": "NAVINFLUOR.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.73, "rs_return": 9.08, "volume_surge": {"surge_ratio": 0.75, "surge_detected": false, "price_change_5d": -4.13, "bullish_surge": false}}, {"ticker": "TATACHEM.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.5, "rs_return": -9.81, "volume_surge": {"surge_ratio": 1.01, "surge_detected": false, "price_change_5d": 0.18, "bullish_surge": false}}, {"ticker": "GALAXYSURF.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.76, "rs_return": -3.01, "volume_surge": {"surge_ratio": 0.53, "surge_detected": false, "price_change_5d": 3.29, "bullish_surge": false}}, {"ticker": "CLEAN.NS", "minervini_score": 0.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.05, "rs_return": -19.46, "volume_surge": {"surge_ratio": 1.3, "surge_detected": false, "price_change_5d": 3.39, "bullish_surge": false}}, {"ticker": "ATUL.NS", "minervini_score": 50.0, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.14, "rs_return": 15.18, "volume_surge": {"surge_ratio": 1.43, "surge_detected": false, "price_change_5d": 1.41, "bullish_surge": false}}], "avg_minervini_score": 25.0, "avg_qullamaggie_score": 37.5, "avg_adr": 3.04, "minervini_pct": 0.0, "qullamaggie_pct": 25.0, "surge_pct": 0.0, "bullish_score": 25.0}, "Capital Goods": {"sector": "Capital Goods", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 0, "volume_surge_count": 3, "bullish_surge_count": 2, "stocks": [{"ticker": "LT.NS", "minervini_score": 66.7, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.82, "rs_return": 5.04, "volume_surge": {"surge_ratio": 1.39, "surge_detected": false, "price_change_5d": -2.34, "bullish_surge": false}}, {"ticker": "SIEMENS.NS", "minervini_score": 33.3, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.22, "rs_return": 3.69, "volume_surge": {"surge_ratio": 1.48, "surge_detected": false, "price_change_5d": 6.62, "bullish_surge": false}}, {"ticker": "ABB.NS", "minervini_score": 50.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.95, "rs_return": 17.02, "volume_surge": {"surge_ratio": 1.56, "surge_detected": true, "price_change_5d": 1.44, "bullish_surge": true}}, {"ticker": "BHEL.NS", "minervini_score": 33.3, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.67, "rs_return": -8.95, "volume_surge": {"surge_ratio": 0.63, "surge_detected": false, "price_change_5d": 2.97, "bullish_surge": false}}, {"ticker": "THERMAX.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.55, "rs_return": 6.77, "volume_surge": {"surge_ratio": 1.2, "surge_detected": false, "price_change_5d": -1.08, "bullish_surge": false}}, {"ticker": "CUMMINSIND.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.1, "rs_return": 8.28, "volume_surge": {"surge_ratio": 1.33, "surge_detected": false, "price_change_5d": 3.47, "bullish_surge": false}}, {"ticker": "AIAENG.NS", "minervini_score": 50.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.58, "rs_return": -0.28, "volume_surge": {"surge_ratio": 0.44, "surge_detected": false, "price_change_5d": -2.47, "bullish_surge": false}}, {"ticker": "GRINDWELL.NS", "minervini_score": 33.3, "qullamaggie_score": 0.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.94, "rs_return": 6.52, "volume_surge": {"surge_ratio": 2.42, "surge_detected": true, "price_change_5d": -0.6, "bullish_surge": false}}, {"ticker": "SCHAEFFLER.NS", "minervini_score": 33.3, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.49, "rs_return": 11.5, "volume_surge": {"surge_ratio": 4.85, "surge_detected": true, "price_change_5d": 12.04, "bullish_surge": true}}, {"ticker": "TIINDIA.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.87, "rs_return": -1.5, "volume_surge": {"surge_ratio": 1.38, "surge_detected": false, "price_change_5d": 6.48, "bullish_surge": false}}], "avg_minervini_score": 40.0, "avg_qullamaggie_score": 28.3, "avg_adr": 3.12, "minervini_pct": 0.0, "qullamaggie_pct": 0.0, "surge_pct": 20.0, "bullish_score": 31.3}, "Consumer Durables": {"sector": "Consumer Durables", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 3, "volume_surge_count": 1, "bullish_surge_count": 1, "stocks": [{"ticker": "TITAN.NS", "minervini_score": 66.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.96, "rs_return": 11.11, "volume_surge": {"surge_ratio": 0.72, "surge_detected": false, "price_change_5d": 2.15, "bullish_surge": false}}, {"ticker": "HAVELLS.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.14, "rs_return": -2.36, "volume_surge": {"surge_ratio": 0.89, "surge_detected": false, "price_change_5d": -1.12, "bullish_surge": false}}, {"ticker": "VOLTAS.NS", "minervini_score": 66.7, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.08, "rs_return": 14.77, "volume_surge": {"surge_ratio": 1.48, "surge_detected": false, "price_change_5d": 0.93, "bullish_surge": false}}, {"ticker": "BLUESTARCO.NS", "minervini_score": 50.0, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.01, "rs_return": 9.71, "volume_surge": {"surge_ratio": 0.65, "surge_detected": false, "price_change_5d": -1.38, "bullish_surge": false}}, {"ticker": "CROMPTON.NS", "minervini_score": 16.7, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.24, "rs_return": -1.75, "volume_surge": {"surge_ratio": 0.47, "surge_detected": false, "price_change_5d": -2.86, "bullish_surge": false}}, {"ticker": "DIXON.NS", "minervini_score": 0.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.75, "rs_return": -27.72, "volume_surge": {"surge_ratio": 0.95, "surge_detected": false, "price_change_5d": -4.91, "bullish_surge": false}}, {"ticker": "AMBER.NS", "minervini_score": 50.0, "qullamaggie_score": 66.7, "minervini_passed": false, "qullamaggie_passed": true, "adr": 3.46, "rs_return": 12.75, "volume_surge": {"surge_ratio": 0.84, "surge_detected": false, "price_change_5d": 4.23, "bullish_surge": false}}, {"ticker": "VGUARD.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.93, "rs_return": -8.14, "volume_surge": {"surge_ratio": 0.41, "surge_detected": false, "price_change_5d": -0.7, "bullish_surge": false}}, {"ticker": "BAJAJELEC.NS", "minervini_score": 0.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.75, "rs_return": -24.6, "volume_surge": {"surge_ratio": 0.19, "surge_detected": false, "price_change_5d": -5.14, "bullish_surge": false}}, {"ticker": "ORIENTELEC.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.98, "rs_return": -1.13, "volume_surge": {"surge_ratio": 3.83, "surge_detected": true, "price_change_5d": 4.54, "bullish_surge": true}}], "avg_minervini_score": 28.4, "avg_qullamaggie_score": 48.3, "avg_adr": 3.13, "minervini_pct": 0.0, "qullamaggie_pct": 30.0, "surge_pct": 10.0, "bullish_score": 32.7}, "Financial Services": {"sector": "Financial Services", "total_stocks": 10, "minervini_passed": 0, "qullamaggie_passed": 0, "volume_surge_count": 1, "bullish_surge_count": 1, "stocks": [{"ticker": "BAJFINANCE.NS", "minervini_score": 50.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.25, "rs_return": -2.47, "volume_surge": {"surge_ratio": 0.85, "surge_detected": false, "price_change_5d": -3.33, "bullish_surge": false}}, {"ticker": "BAJAJFINSV.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.67, "rs_return": -4.25, "volume_surge": {"surge_ratio": 0.82, "surge_detected": false, "price_change_5d": -3.16, "bullish_surge": false}}, {"ticker": "SBILIFE.NS", "minervini_score": 50.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.09, "rs_return": 3.33, "volume_surge": {"surge_ratio": 0.92, "surge_detected": false, "price_change_5d": -2.06, "bullish_surge": false}}, {"ticker": "HDFCLIFE.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.93, "rs_return": -6.71, "volume_surge": {"surge_ratio": 0.89, "surge_detected": false, "price_change_5d": -1.83, "bullish_surge": false}}, {"ticker": "ICICIPRULI.NS", "minervini_score": 33.3, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 1.97, "rs_return": 5.3, "volume_surge": {"surge_ratio": 0.91, "surge_detected": false, "price_change_5d": 0.49, "bullish_surge": false}}, {"ticker": "CHOLAFIN.NS", "minervini_score": 66.7, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.82, "rs_return": 0.42, "volume_surge": {"surge_ratio": 1.64, "surge_detected": true, "price_change_5d": 3.67, "bullish_surge": true}}, {"ticker": "MUTHOOTFIN.NS", "minervini_score": 50.0, "qullamaggie_score": 16.7, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.7, "rs_return": -12.01, "volume_surge": {"surge_ratio": 1.09, "surge_detected": false, "price_change_5d": -3.08, "bullish_surge": false}}, {"ticker": "MANAPPURAM.NS", "minervini_score": 50.0, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.73, "rs_return": 0.47, "volume_surge": {"surge_ratio": 1.3, "surge_detected": false, "price_change_5d": -7.59, "bullish_surge": false}}, {"ticker": "PNBHOUSING.NS", "minervini_score": 16.7, "qullamaggie_score": 33.3, "minervini_passed": false, "qullamaggie_passed": false, "adr": 2.89, "rs_return": -9.25, "volume_surge": {"surge_ratio": 0.65, "surge_detected": false, "price_change_5d": -2.84, "bullish_surge": false}}, {"ticker": "IIFL.NS", "minervini_score": 50.0, "qullamaggie_score": 50.0, "minervini_passed": false, "qullamaggie_passed": false, "adr": 3.4, "rs_return": -14.91, "volume_surge": {"surge_ratio": 0.39, "surge_detected": false, "price_change_5d": -0.28, "bullish_surge": false}}], "avg_minervini_score": 40.0, "avg_qullamaggie_score": 30.0, "avg_adr": 2.64, "minervini_pct": 0.0, "qullamaggie_pct": 0.0, "surge_pct": 10.0, "bullish_score": 30.0}}};
 let activeMetric = 'composite';
-let activeSector = null;
 
-// ── COLOR ENGINE ──
-function scoreToColor(score) {
-  if (score >= 80) return '#00ff88';
-  if (score >= 65) return '#23c56e';
-  if (score >= 50) return '#1aaa5c';
-  if (score >= 40) return '#2a3a2e';
-  if (score >= 30) return '#2a2a3d';
-  if (score >= 20) return '#7a1f2e';
-  if (score >= 10) return '#a02030';
-  return '#ff2d42';
+function scoreToColor(s){
+  if(s>=80)return'#00ff88';if(s>=65)return'#23c56e';if(s>=50)return'#1aaa5c';
+  if(s>=40)return'#2a3a2e';if(s>=30)return'#2a2a3d';if(s>=20)return'#7a1f2e';
+  if(s>=10)return'#a02030';return'#ff2d42';
+}
+function scoreToBg(s){
+  if(s>=65)return'linear-gradient(135deg,#0a1f14,#091a10)';
+  if(s>=40)return'linear-gradient(135deg,#0f0f1a,#0d0d16)';
+  return'linear-gradient(135deg,#1a090c,#140809)';
+}
+function getScore(d){
+  return activeMetric==='minervini'?d.minervini_pct:activeMetric==='qullamaggie'?d.qullamaggie_pct:activeMetric==='volume'?d.surge_pct:d.bullish_score;
+}
+function signal(s){
+  return s>=65?{t:'▲ BULLISH',c:'#00ff88'}:s>=40?{t:'◆ NEUTRAL',c:'#ffd166'}:{t:'▼ BEARISH',c:'#ff2d42'};
 }
 
-function scoreToBg(score) {
-  if (score >= 65) return 'linear-gradient(135deg, #0a1f14 0%, #091a10 100%)';
-  if (score >= 40) return 'linear-gradient(135deg, #0f0f1a 0%, #0d0d16 100%)';
-  return 'linear-gradient(135deg, #1a090c 0%, #140809 100%)';
-}
-
-function getMetricScore(data) {
-  switch (activeMetric) {
-    case 'minervini':   return data.minervini_pct;
-    case 'qullamaggie': return data.qullamaggie_pct;
-    case 'volume':      return data.surge_pct;
-    default:            return data.bullish_score;
-  }
-}
-
-function signalLabel(score) {
-  if (score >= 65) return { text: '▲ BULLISH', color: '#00ff88' };
-  if (score >= 40) return { text: '◆ NEUTRAL', color: '#ffd166' };
-  return { text: '▼ BEARISH', color: '#ff2d42' };
-}
-
-// ── RENDER HEATMAP ──
-function renderHeatmap() {
-  const grid = document.getElementById('heatmapGrid');
-  const sectors = SCAN_DATA.sectors;
-  grid.innerHTML = '';
-
-  let bull = 0, neut = 0, bear = 0, totalScore = 0;
-  const sectorList = Object.values(sectors);
-
-  // Sort by current metric
-  sectorList.sort((a, b) => getMetricScore(b) - getMetricScore(a));
-
-  sectorList.forEach((data, i) => {
-    const score   = getMetricScore(data);
-    const color   = scoreToColor(score);
-    const bg      = scoreToBg(data.bullish_score);
-    const signal  = signalLabel(data.bullish_score);
-    const circumference = 2 * Math.PI * 20;
-    const dash    = (data.bullish_score / 100) * circumference;
-
-    if (data.bullish_score >= 65) bull++;
-    else if (data.bullish_score >= 40) neut++;
-    else bear++;
-    totalScore += data.bullish_score;
-
-    const hasSurge  = data.surge_pct >= 30;
-    const surgeText = hasSurge
-      ? `<span class="surge-badge bullish">⚡ Vol Surge ${data.surge_pct}%</span>`
-      : `<span class="surge-badge neutral">Vol Quiet ${data.surge_pct}%</span>`;
-
-    const card = document.createElement('div');
-    card.className = 'sector-card';
-    card.style.cssText = `background:${bg}; border-color: ${color}22; animation-delay:${i * 0.05}s`;
-    card.innerHTML = `
+function renderHeatmap(){
+  const grid=document.getElementById('heatmapGrid');
+  grid.innerHTML='';
+  let bull=0,neut=0,bear=0,total=0;
+  const list=Object.values(SCAN_DATA.sectors).sort((a,b)=>getScore(b)-getScore(a));
+  list.forEach((d,i)=>{
+    const sc=d.bullish_score,color=scoreToColor(sc),bg=scoreToBg(sc),sig=signal(sc);
+    const circ=2*Math.PI*20,dash=(sc/100)*circ;
+    if(sc>=65)bull++;else if(sc>=40)neut++;else bear++;
+    total+=sc;
+    const surge=d.surge_pct>=30;
+    const card=document.createElement('div');
+    card.className='sector-card';
+    card.style.cssText=`background:${bg};border-color:${color}22`;
+    card.innerHTML=`
       <div class="card-header">
-        <div class="sector-name">${data.sector}</div>
-        <div class="sector-signal" style="color:${signal.color}">${signal.text}</div>
-        <div class="score-area">
-          <div class="score-ring">
-            <svg viewBox="0 0 50 50" width="52" height="52">
-              <circle class="track" cx="25" cy="25" r="20"/>
-              <circle class="fill" cx="25" cy="25" r="20"
-                stroke="${color}"
-                stroke-dasharray="${dash} ${circumference}"
-                stroke-dashoffset="0"/>
-            </svg>
-            <div class="score-number">${Math.round(data.bullish_score)}</div>
-          </div>
-        </div>
+        <div class="sector-name">${d.sector}</div>
+        <div class="sector-signal" style="color:${sig.c}">${sig.t}</div>
+        <div class="score-area"><div class="score-ring">
+          <svg viewBox="0 0 50 50" width="52" height="52">
+            <circle class="track" cx="25" cy="25" r="20"/>
+            <circle class="fill" cx="25" cy="25" r="20" stroke="${color}"
+              stroke-dasharray="${dash} ${circ}" stroke-dashoffset="0"/>
+          </svg>
+          <div class="score-number">${Math.round(sc)}</div>
+        </div></div>
       </div>
       <div class="card-body">
-        <div class="metric-row">
-          <span class="metric-label">Minervini</span>
-          <div class="metric-bar-wrap">
-            <div class="metric-bar-fill" style="width:${data.minervini_pct}%;background:#7b61ff"></div>
-          </div>
-          <span class="metric-value">${data.minervini_pct}%</span>
-        </div>
-        <div class="metric-row">
-          <span class="metric-label">Quillamag</span>
-          <div class="metric-bar-wrap">
-            <div class="metric-bar-fill" style="width:${data.qullamaggie_pct}%;background:#00c9ff"></div>
-          </div>
-          <span class="metric-value">${data.qullamaggie_pct}%</span>
-        </div>
-        <div class="metric-row">
-          <span class="metric-label">Vol Surge</span>
-          <div class="metric-bar-wrap">
-            <div class="metric-bar-fill" style="width:${data.surge_pct}%;background:#ffd166"></div>
-          </div>
-          <span class="metric-value">${data.surge_pct}%</span>
-        </div>
-        ${surgeText}
-        <div class="adr-chip">Avg ADR ${data.avg_adr}%</div>
-      </div>
-    `;
-    card.addEventListener('click', () => openDrawer(data.sector));
+        <div class="metric-row"><span class="metric-label">Minervini</span>
+          <div class="metric-bar-wrap"><div class="metric-bar-fill" style="width:${d.minervini_pct}%;background:#7b61ff"></div></div>
+          <span class="metric-value">${d.minervini_pct}%</span></div>
+        <div class="metric-row"><span class="metric-label">Quillamag</span>
+          <div class="metric-bar-wrap"><div class="metric-bar-fill" style="width:${d.qullamaggie_pct}%;background:#00c9ff"></div></div>
+          <span class="metric-value">${d.qullamaggie_pct}%</span></div>
+        <div class="metric-row"><span class="metric-label">Vol Surge</span>
+          <div class="metric-bar-wrap"><div class="metric-bar-fill" style="width:${d.surge_pct}%;background:#ffd166"></div></div>
+          <span class="metric-value">${d.surge_pct}%</span></div>
+        <span class="surge-badge ${surge?'bullish':'neutral'}">${surge?'⚡ Vol Surge '+d.surge_pct+'%':'Vol Quiet '+d.surge_pct+'%'}</span>
+        <div class="adr-chip">Avg ADR ${d.avg_adr}%</div>
+      </div>`;
+    card.addEventListener('click',()=>openDrawer(d.sector));
     grid.appendChild(card);
   });
-
-  // Summary bar
-  document.getElementById('sumBull').textContent = bull;
-  document.getElementById('sumNeut').textContent = neut;
-  document.getElementById('sumBear').textContent = bear;
-  const avg = sectorList.length ? Math.round(totalScore / sectorList.length) : 0;
-  const avgEl = document.getElementById('sumAvg');
-  avgEl.textContent = avg;
-  avgEl.style.color = scoreToColor(avg);
-
-  // Meta
-  document.getElementById('scanDate').textContent = SCAN_DATA.scan_date;
-  document.getElementById('stockCount').textContent =
-    `${sectorList.reduce((a, s) => a + (s.stocks || []).length, 0)} stocks scanned`;
+  document.getElementById('sumBull').textContent=bull;
+  document.getElementById('sumNeut').textContent=neut;
+  document.getElementById('sumBear').textContent=bear;
+  const avg=list.length?Math.round(total/list.length):0;
+  const el=document.getElementById('sumAvg');
+  el.textContent=avg; el.style.color=scoreToColor(avg);
+  document.getElementById('scanDate').textContent=SCAN_DATA.scan_date;
+  document.getElementById('stockCount').textContent=list.reduce((a,s)=>a+(s.stocks||[]).length,0)+' stocks scanned';
 }
 
-// ── METRIC TAB SWITCH ──
-function setMetric(m) {
-  activeMetric = m;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
+function setMetric(m,btn){
+  activeMetric=m;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
   renderHeatmap();
 }
 
-// ── DRAWER ──
-function openDrawer(sectorName) {
-  const data = SCAN_DATA.sectors[sectorName];
-  if (!data) return;
-
-  const signal = signalLabel(data.bullish_score);
-
-  document.getElementById('drawerTitle').textContent = sectorName;
-  document.getElementById('drawerDate').textContent = SCAN_DATA.scan_date;
-
-  document.getElementById('drawerScoreGrid').innerHTML = `
-    <div class="score-box">
-      <div class="sb-value" style="color:${scoreToColor(data.bullish_score)}">${data.bullish_score}</div>
-      <div class="sb-label">Bull Score</div>
-    </div>
-    <div class="score-box">
-      <div class="sb-value" style="color:#7b61ff">${data.minervini_pct}%</div>
-      <div class="sb-label">Minervini</div>
-    </div>
-    <div class="score-box">
-      <div class="sb-value" style="color:#00c9ff">${data.qullamaggie_pct}%</div>
-      <div class="sb-label">Qullamag</div>
-    </div>
-    <div class="score-box">
-      <div class="sb-value" style="color:#ffd166">${data.surge_pct}%</div>
-      <div class="sb-label">Vol Surge</div>
-    </div>
-    <div class="score-box">
-      <div class="sb-value">${data.avg_adr}%</div>
-      <div class="sb-label">Avg ADR</div>
-    </div>
-    <div class="score-box">
-      <div class="sb-value" style="color:${signal.color}">${signal.text}</div>
-      <div class="sb-label">Signal</div>
-    </div>
-  `;
-
-  const tbody = document.getElementById('drawerTable');
-  tbody.innerHTML = '';
-
-  (data.stocks || [])
-    .sort((a, b) => b.minervini_score - a.minervini_score)
-    .forEach(s => {
-      const tick = s.ticker.replace('.NS', '');
-      const mPass = s.minervini_passed;
-      const qPass = s.qullamaggie_passed;
-      const vol   = s.volume_surge;
-      const rs    = s.rs_return > 0 ? `+${s.rs_return}%` : `${s.rs_return}%`;
-      const rsColor = s.rs_return > 0 ? '#00ff88' : '#ff2d42';
-
-      tbody.innerHTML += `
-        <tr>
-          <td class="tick">${tick}</td>
-          <td><span class="pass-dot ${mPass ? 'yes' : 'no'}"></span></td>
-          <td><span class="pass-dot ${qPass ? 'yes' : 'no'}"></span></td>
-          <td>${s.adr}%</td>
-          <td style="color:${rsColor}">${rs}</td>
-          <td>${vol.bullish_surge ? '⚡' : '—'}</td>
-        </tr>
-      `;
-    });
-
+function openDrawer(name){
+  const d=SCAN_DATA.sectors[name];if(!d)return;
+  const sig=signal(d.bullish_score);
+  document.getElementById('drawerTitle').textContent=name;
+  document.getElementById('drawerDate').textContent=SCAN_DATA.scan_date;
+  document.getElementById('drawerScoreGrid').innerHTML=`
+    <div class="score-box"><div class="sb-value" style="color:${scoreToColor(d.bullish_score)}">${d.bullish_score}</div><div class="sb-label">Bull Score</div></div>
+    <div class="score-box"><div class="sb-value" style="color:#7b61ff">${d.minervini_pct}%</div><div class="sb-label">Minervini</div></div>
+    <div class="score-box"><div class="sb-value" style="color:#00c9ff">${d.qullamaggie_pct}%</div><div class="sb-label">Qullamag</div></div>
+    <div class="score-box"><div class="sb-value" style="color:#ffd166">${d.surge_pct}%</div><div class="sb-label">Vol Surge</div></div>
+    <div class="score-box"><div class="sb-value">${d.avg_adr}%</div><div class="sb-label">Avg ADR</div></div>
+    <div class="score-box"><div class="sb-value" style="color:${sig.c};font-size:.8rem">${sig.t}</div><div class="sb-label">Signal</div></div>`;
+  const tbody=document.getElementById('drawerTable');
+  tbody.innerHTML='';
+  (d.stocks||[]).sort((a,b)=>b.minervini_score-a.minervini_score).forEach(s=>{
+    const tick=s.ticker.replace('.NS','');
+    const rs=s.rs_return>0?`+${s.rs_return}%`:`${s.rs_return}%`;
+    const rsc=s.rs_return>0?'#00ff88':'#ff2d42';
+    tbody.innerHTML+=`<tr>
+      <td class="tick">${tick}</td>
+      <td><span class="pass-dot ${s.minervini_passed?'yes':'no'}"></span></td>
+      <td><span class="pass-dot ${s.qullamaggie_passed?'yes':'no'}"></span></td>
+      <td>${s.adr}%</td>
+      <td style="color:${rsc}">${rs}</td>
+      <td>${s.volume_surge&&s.volume_surge.bullish_surge?'⚡':'—'}</td></tr>`;
+  });
   document.getElementById('drawer').classList.add('open');
   document.getElementById('overlay').classList.add('open');
 }
 
-function closeDrawer() {
+function closeDrawer(){
   document.getElementById('drawer').classList.remove('open');
   document.getElementById('overlay').classList.remove('open');
 }
 
-// ── INIT ──
 renderHeatmap();
 </script>
 </body>
