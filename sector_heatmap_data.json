@@ -1,71 +1,71 @@
 {
-  "scan_date": "2026-10-05 08:44 EST",
+  "scan_date": "2026-10-12 08:55 EST",
   "sectors": {
     "IT": {
       "sector": "IT",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 1,
-      "volume_surge_count": 2,
+      "volume_surge_count": 0,
       "bullish_surge_count": 0,
       "stocks": [
         {
           "ticker": "TCS.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.45,
-          "rs_return": 2.79,
+          "adr": 2.81,
+          "rs_return": -2.5,
           "volume_surge": {
-            "surge_ratio": 1.14,
+            "surge_ratio": 1.43,
             "surge_detected": false,
-            "price_change_5d": 1.03,
+            "price_change_5d": 0.92,
             "bullish_surge": false
           }
         },
         {
           "ticker": "INFY.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.18,
-          "rs_return": -4.53,
+          "adr": 2.25,
+          "rs_return": -7.39,
           "volume_surge": {
-            "surge_ratio": 1.19,
+            "surge_ratio": 1.12,
             "surge_detected": false,
-            "price_change_5d": 2.07,
+            "price_change_5d": -0.82,
             "bullish_surge": false
           }
         },
         {
           "ticker": "WIPRO.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.85,
-          "rs_return": -5.02,
+          "adr": 2.08,
+          "rs_return": -7.73,
           "volume_surge": {
-            "surge_ratio": 3.18,
-            "surge_detected": true,
-            "price_change_5d": -1.12,
+            "surge_ratio": 1.1,
+            "surge_detected": false,
+            "price_change_5d": -0.33,
             "bullish_surge": false
           }
         },
         {
           "ticker": "HCLTECH.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.56,
-          "rs_return": 6.25,
+          "adr": 2.73,
+          "rs_return": 5.53,
           "volume_surge": {
-            "surge_ratio": 1.52,
-            "surge_detected": true,
-            "price_change_5d": -4.22,
+            "surge_ratio": 0.95,
+            "surge_detected": false,
+            "price_change_5d": 1.41,
             "bullish_surge": false
           }
         },
@@ -75,12 +75,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.33,
-          "rs_return": 7.43,
+          "adr": 2.53,
+          "rs_return": -2.21,
           "volume_surge": {
-            "surge_ratio": 1.09,
+            "surge_ratio": 0.93,
             "surge_detected": false,
-            "price_change_5d": -0.84,
+            "price_change_5d": -5.5,
             "bullish_surge": false
           }
         },
@@ -90,27 +90,27 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.62,
-          "rs_return": 2.14,
+          "adr": 2.75,
+          "rs_return": -1.15,
           "volume_surge": {
-            "surge_ratio": 1.44,
+            "surge_ratio": 1.02,
             "surge_detected": false,
-            "price_change_5d": 2.5,
+            "price_change_5d": 2.09,
             "bullish_surge": false
           }
         },
         {
           "ticker": "COFORGE.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 83.3,
+          "qullamaggie_score": 66.7,
           "minervini_passed": false,
           "qullamaggie_passed": true,
-          "adr": 3.04,
-          "rs_return": 28.43,
+          "adr": 3.16,
+          "rs_return": 20.28,
           "volume_surge": {
-            "surge_ratio": 0.92,
+            "surge_ratio": 0.72,
             "surge_detected": false,
-            "price_change_5d": 3.85,
+            "price_change_5d": -0.57,
             "bullish_surge": false
           }
         },
@@ -120,46 +120,46 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.56,
-          "rs_return": 16.81,
+          "adr": 2.84,
+          "rs_return": 12.73,
           "volume_surge": {
-            "surge_ratio": 0.94,
+            "surge_ratio": 0.79,
             "surge_detected": false,
-            "price_change_5d": 3.35,
+            "price_change_5d": 4.2,
             "bullish_surge": false
           }
         },
         {
           "ticker": "KPITTECH.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.7,
-          "rs_return": -10.27,
+          "adr": 3.06,
+          "rs_return": -12.98,
           "volume_surge": {
-            "surge_ratio": 0.65,
+            "surge_ratio": 0.75,
             "surge_detected": false,
-            "price_change_5d": -4.99,
+            "price_change_5d": -2.05,
             "bullish_surge": false
           }
         }
       ],
       "avg_minervini_score": 14.8,
-      "avg_qullamaggie_score": 25.9,
-      "avg_adr": 2.48,
+      "avg_qullamaggie_score": 27.8,
+      "avg_adr": 2.69,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 11.1,
       "surge_pct": 0.0,
-      "bullish_score": 16.3
+      "bullish_score": 17.0
     },
     "Banking": {
       "sector": "Banking",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 0,
-      "volume_surge_count": 2,
-      "bullish_surge_count": 2,
+      "volume_surge_count": 1,
+      "bullish_surge_count": 1,
       "stocks": [
         {
           "ticker": "HDFCBANK.NS",
@@ -167,27 +167,27 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.83,
-          "rs_return": -12.73,
+          "adr": 2.03,
+          "rs_return": -13.25,
           "volume_surge": {
-            "surge_ratio": 1.34,
+            "surge_ratio": 0.79,
             "surge_detected": false,
-            "price_change_5d": -3.87,
+            "price_change_5d": -0.38,
             "bullish_surge": false
           }
         },
         {
           "ticker": "ICICIBANK.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.46,
-          "rs_return": -2.83,
+          "adr": 1.6,
+          "rs_return": -4.22,
           "volume_surge": {
-            "surge_ratio": 1.21,
+            "surge_ratio": 1.05,
             "surge_detected": false,
-            "price_change_5d": 0.26,
+            "price_change_5d": 0.38,
             "bullish_surge": false
           }
         },
@@ -197,27 +197,27 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.87,
-          "rs_return": 13.12,
+          "adr": 2.14,
+          "rs_return": 16.95,
           "volume_surge": {
-            "surge_ratio": 2.57,
+            "surge_ratio": 1.87,
             "surge_detected": true,
-            "price_change_5d": 3.45,
+            "price_change_5d": 6.26,
             "bullish_surge": true
           }
         },
         {
           "ticker": "AXISBANK.NS",
-          "minervini_score": 0.0,
+          "minervini_score": 16.7,
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.77,
-          "rs_return": -5.62,
+          "adr": 1.95,
+          "rs_return": -5.05,
           "volume_surge": {
-            "surge_ratio": 1.2,
+            "surge_ratio": 1.3,
             "surge_detected": false,
-            "price_change_5d": 1.02,
+            "price_change_5d": 2.36,
             "bullish_surge": false
           }
         },
@@ -227,27 +227,27 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.5,
-          "rs_return": -5.48,
+          "adr": 1.68,
+          "rs_return": -7.41,
           "volume_surge": {
-            "surge_ratio": 1.34,
+            "surge_ratio": 0.91,
             "surge_detected": false,
-            "price_change_5d": -2.22,
+            "price_change_5d": -1.86,
             "bullish_surge": false
           }
         },
         {
           "ticker": "INDUSINDBK.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.89,
-          "rs_return": -10.67,
+          "adr": 2.17,
+          "rs_return": -14.96,
           "volume_surge": {
-            "surge_ratio": 1.35,
+            "surge_ratio": 1.34,
             "surge_detected": false,
-            "price_change_5d": -2.59,
+            "price_change_5d": -4.34,
             "bullish_surge": false
           }
         },
@@ -257,75 +257,75 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 3.29,
-          "rs_return": -12.66,
+          "adr": 3.72,
+          "rs_return": -23.78,
           "volume_surge": {
-            "surge_ratio": 1.12,
+            "surge_ratio": 1.02,
             "surge_detected": false,
-            "price_change_5d": -9.56,
+            "price_change_5d": -6.66,
             "bullish_surge": false
           }
         },
         {
           "ticker": "FEDERALBNK.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.95,
-          "rs_return": 0.6,
+          "adr": 2.33,
+          "rs_return": 0.92,
           "volume_surge": {
-            "surge_ratio": 1.52,
-            "surge_detected": true,
-            "price_change_5d": 1.68,
-            "bullish_surge": true
+            "surge_ratio": 1.16,
+            "surge_detected": false,
+            "price_change_5d": 0.63,
+            "bullish_surge": false
           }
         },
         {
           "ticker": "IDFCFIRSTB.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.93,
-          "rs_return": 5.73,
+          "adr": 2.3,
+          "rs_return": 0.22,
           "volume_surge": {
-            "surge_ratio": 1.14,
+            "surge_ratio": 0.99,
             "surge_detected": false,
-            "price_change_5d": -2.1,
+            "price_change_5d": -3.66,
             "bullish_surge": false
           }
         },
         {
           "ticker": "RBLBANK.NS",
           "minervini_score": 66.7,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.32,
-          "rs_return": 16.14,
+          "adr": 2.55,
+          "rs_return": 11.2,
           "volume_surge": {
-            "surge_ratio": 1.04,
+            "surge_ratio": 0.8,
             "surge_detected": false,
-            "price_change_5d": 0.42,
+            "price_change_5d": 0.64,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 30.0,
-      "avg_qullamaggie_score": 18.3,
-      "avg_adr": 1.98,
+      "avg_minervini_score": 31.7,
+      "avg_qullamaggie_score": 20.0,
+      "avg_adr": 2.25,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 0.0,
-      "surge_pct": 20.0,
-      "bullish_score": 23.3
+      "surge_pct": 10.0,
+      "bullish_score": 22.7
     },
     "Pharma": {
       "sector": "Pharma",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 0,
-      "volume_surge_count": 2,
+      "volume_surge_count": 0,
       "bullish_surge_count": 0,
       "stocks": [
         {
@@ -334,12 +334,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.52,
-          "rs_return": -5.52,
+          "adr": 1.73,
+          "rs_return": -9.41,
           "volume_surge": {
-            "surge_ratio": 1.05,
+            "surge_ratio": 0.74,
             "surge_detected": false,
-            "price_change_5d": -3.68,
+            "price_change_5d": -1.12,
             "bullish_surge": false
           }
         },
@@ -349,12 +349,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.91,
-          "rs_return": -10.79,
+          "adr": 2.24,
+          "rs_return": -1.11,
           "volume_surge": {
-            "surge_ratio": 2.09,
-            "surge_detected": true,
-            "price_change_5d": -0.43,
+            "surge_ratio": 0.96,
+            "surge_detected": false,
+            "price_change_5d": 2.44,
             "bullish_surge": false
           }
         },
@@ -364,12 +364,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.75,
-          "rs_return": -6.76,
+          "adr": 1.9,
+          "rs_return": -9.13,
           "volume_surge": {
-            "surge_ratio": 1.08,
+            "surge_ratio": 0.66,
             "surge_detected": false,
-            "price_change_5d": -4.62,
+            "price_change_5d": -2.15,
             "bullish_surge": false
           }
         },
@@ -379,42 +379,42 @@
           "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.02,
-          "rs_return": 36.29,
+          "adr": 2.16,
+          "rs_return": 31.4,
           "volume_surge": {
-            "surge_ratio": 0.96,
+            "surge_ratio": 0.79,
             "surge_detected": false,
-            "price_change_5d": -4.69,
+            "price_change_5d": 2.29,
             "bullish_surge": false
           }
         },
         {
           "ticker": "BIOCON.NS",
-          "minervini_score": 33.3,
-          "qullamaggie_score": 33.3,
+          "minervini_score": 16.7,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.31,
-          "rs_return": -6.98,
+          "adr": 2.41,
+          "rs_return": -20.76,
           "volume_surge": {
-            "surge_ratio": 0.67,
+            "surge_ratio": 0.96,
             "surge_detected": false,
-            "price_change_5d": -3.35,
+            "price_change_5d": -6.3,
             "bullish_surge": false
           }
         },
         {
           "ticker": "LUPIN.NS",
-          "minervini_score": 33.3,
+          "minervini_score": 16.7,
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.77,
-          "rs_return": -17.79,
+          "adr": 1.94,
+          "rs_return": -20.82,
           "volume_surge": {
-            "surge_ratio": 0.86,
+            "surge_ratio": 0.73,
             "surge_detected": false,
-            "price_change_5d": -4.06,
+            "price_change_5d": -3.48,
             "bullish_surge": false
           }
         },
@@ -424,12 +424,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.08,
-          "rs_return": 7.55,
+          "adr": 2.23,
+          "rs_return": 9.89,
           "volume_surge": {
-            "surge_ratio": 1.08,
+            "surge_ratio": 0.8,
             "surge_detected": false,
-            "price_change_5d": -2.16,
+            "price_change_5d": 1.87,
             "bullish_surge": false
           }
         },
@@ -439,12 +439,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.03,
-          "rs_return": -2.57,
+          "adr": 2.18,
+          "rs_return": -6.97,
           "volume_surge": {
-            "surge_ratio": 1.05,
+            "surge_ratio": 0.7,
             "surge_detected": false,
-            "price_change_5d": -4.95,
+            "price_change_5d": -3.05,
             "bullish_surge": false
           }
         },
@@ -454,59 +454,59 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.19,
-          "rs_return": -7.82,
+          "adr": 2.35,
+          "rs_return": -6.38,
           "volume_surge": {
-            "surge_ratio": 1.23,
+            "surge_ratio": 1.1,
             "surge_detected": false,
-            "price_change_5d": -2.19,
+            "price_change_5d": 0.82,
             "bullish_surge": false
           }
         },
         {
           "ticker": "GLENMARK.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.54,
-          "rs_return": 2.76,
+          "adr": 2.8,
+          "rs_return": -1.73,
           "volume_surge": {
-            "surge_ratio": 1.8,
-            "surge_detected": true,
-            "price_change_5d": -4.08,
+            "surge_ratio": 0.93,
+            "surge_detected": false,
+            "price_change_5d": -1.39,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 40.0,
-      "avg_qullamaggie_score": 25.0,
-      "avg_adr": 2.01,
+      "avg_minervini_score": 36.7,
+      "avg_qullamaggie_score": 21.7,
+      "avg_adr": 2.19,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 0.0,
       "surge_pct": 0.0,
-      "bullish_score": 26.0
+      "bullish_score": 23.4
     },
     "Auto": {
       "sector": "Auto",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 0,
-      "volume_surge_count": 1,
+      "volume_surge_count": 0,
       "bullish_surge_count": 0,
       "stocks": [
         {
           "ticker": "MARUTI.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.7,
-          "rs_return": -16.65,
+          "adr": 1.85,
+          "rs_return": -15.21,
           "volume_surge": {
-            "surge_ratio": 1.41,
+            "surge_ratio": 0.99,
             "surge_detected": false,
-            "price_change_5d": -4.58,
+            "price_change_5d": -1.81,
             "bullish_surge": false
           }
         },
@@ -516,12 +516,12 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.77,
-          "rs_return": -7.94,
+          "adr": 1.91,
+          "rs_return": -9.13,
           "volume_surge": {
-            "surge_ratio": 1.44,
+            "surge_ratio": 1.11,
             "surge_detected": false,
-            "price_change_5d": -5.89,
+            "price_change_5d": -1.63,
             "bullish_surge": false
           }
         },
@@ -531,12 +531,12 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.8,
-          "rs_return": -1.57,
+          "adr": 2.15,
+          "rs_return": -0.99,
           "volume_surge": {
-            "surge_ratio": 2.18,
-            "surge_detected": true,
-            "price_change_5d": -11.32,
+            "surge_ratio": 1.0,
+            "surge_detected": false,
+            "price_change_5d": 0.41,
             "bullish_surge": false
           }
         },
@@ -546,42 +546,42 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.97,
-          "rs_return": 5.65,
+          "adr": 2.26,
+          "rs_return": 3.05,
           "volume_surge": {
-            "surge_ratio": 1.09,
+            "surge_ratio": 0.61,
             "surge_detected": false,
-            "price_change_5d": -4.95,
+            "price_change_5d": -2.66,
             "bullish_surge": false
           }
         },
         {
           "ticker": "EICHERMOT.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.51,
-          "rs_return": -3.88,
+          "adr": 1.81,
+          "rs_return": -1.08,
           "volume_surge": {
-            "surge_ratio": 1.17,
+            "surge_ratio": 0.83,
             "surge_detected": false,
-            "price_change_5d": -4.12,
+            "price_change_5d": 1.5,
             "bullish_surge": false
           }
         },
         {
           "ticker": "TVSMOTOR.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 50.0,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.17,
-          "rs_return": 10.32,
+          "adr": 2.46,
+          "rs_return": 9.32,
           "volume_surge": {
-            "surge_ratio": 0.78,
+            "surge_ratio": 0.92,
             "surge_detected": false,
-            "price_change_5d": -3.42,
+            "price_change_5d": -2.14,
             "bullish_surge": false
           }
         },
@@ -591,104 +591,104 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.29,
-          "rs_return": -1.98,
+          "adr": 2.51,
+          "rs_return": -6.76,
           "volume_surge": {
-            "surge_ratio": 0.96,
+            "surge_ratio": 0.77,
             "surge_detected": false,
-            "price_change_5d": -3.75,
+            "price_change_5d": -5.18,
             "bullish_surge": false
           }
         },
         {
           "ticker": "BALKRISIND.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.29,
-          "rs_return": -4.03,
+          "adr": 2.38,
+          "rs_return": -7.74,
           "volume_surge": {
-            "surge_ratio": 0.26,
+            "surge_ratio": 0.33,
             "surge_detected": false,
-            "price_change_5d": -5.15,
+            "price_change_5d": -3.68,
             "bullish_surge": false
           }
         },
         {
           "ticker": "MOTHERSON.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 50.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.42,
-          "rs_return": 10.85,
+          "adr": 2.67,
+          "rs_return": 9.55,
           "volume_surge": {
-            "surge_ratio": 0.95,
+            "surge_ratio": 0.61,
             "surge_detected": false,
-            "price_change_5d": -6.08,
+            "price_change_5d": -0.56,
             "bullish_surge": false
           }
         }
       ],
       "avg_minervini_score": 29.6,
-      "avg_qullamaggie_score": 18.5,
-      "avg_adr": 1.99,
+      "avg_qullamaggie_score": 11.1,
+      "avg_adr": 2.22,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 0.0,
       "surge_pct": 0.0,
-      "bullish_score": 19.2
+      "bullish_score": 16.3
     },
     "FMCG": {
       "sector": "FMCG",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 0,
-      "volume_surge_count": 0,
-      "bullish_surge_count": 0,
+      "volume_surge_count": 2,
+      "bullish_surge_count": 1,
       "stocks": [
         {
           "ticker": "HINDUNILVR.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.43,
-          "rs_return": -13.92,
+          "adr": 1.6,
+          "rs_return": -13.91,
           "volume_surge": {
-            "surge_ratio": 1.0,
+            "surge_ratio": 1.06,
             "surge_detected": false,
-            "price_change_5d": -5.37,
+            "price_change_5d": -0.71,
             "bullish_surge": false
           }
         },
         {
           "ticker": "ITC.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.62,
-          "rs_return": -5.75,
+          "adr": 2.29,
+          "rs_return": -6.62,
           "volume_surge": {
-            "surge_ratio": 1.2,
-            "surge_detected": false,
-            "price_change_5d": -1.67,
+            "surge_ratio": 2.08,
+            "surge_detected": true,
+            "price_change_5d": -4.31,
             "bullish_surge": false
           }
         },
         {
           "ticker": "NESTLEIND.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.76,
-          "rs_return": -10.21,
+          "adr": 2.12,
+          "rs_return": -7.18,
           "volume_surge": {
-            "surge_ratio": 0.82,
+            "surge_ratio": 0.95,
             "surge_detected": false,
-            "price_change_5d": -4.87,
+            "price_change_5d": 2.12,
             "bullish_surge": false
           }
         },
@@ -698,42 +698,42 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.52,
-          "rs_return": -9.13,
+          "adr": 1.69,
+          "rs_return": -8.25,
           "volume_surge": {
-            "surge_ratio": 1.21,
+            "surge_ratio": 0.56,
             "surge_detected": false,
-            "price_change_5d": -3.78,
+            "price_change_5d": -0.04,
             "bullish_surge": false
           }
         },
         {
           "ticker": "DABUR.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.74,
-          "rs_return": -12.8,
+          "adr": 2.18,
+          "rs_return": -12.56,
           "volume_surge": {
-            "surge_ratio": 1.3,
+            "surge_ratio": 0.77,
             "surge_detected": false,
-            "price_change_5d": -2.54,
+            "price_change_5d": -0.96,
             "bullish_surge": false
           }
         },
         {
           "ticker": "MARICO.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.04,
-          "rs_return": -5.52,
+          "adr": 2.1,
+          "rs_return": -7.79,
           "volume_surge": {
-            "surge_ratio": 1.12,
+            "surge_ratio": 0.57,
             "surge_detected": false,
-            "price_change_5d": -3.52,
+            "price_change_5d": -1.44,
             "bullish_surge": false
           }
         },
@@ -743,13 +743,13 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.03,
-          "rs_return": -13.36,
+          "adr": 2.57,
+          "rs_return": -11.14,
           "volume_surge": {
-            "surge_ratio": 0.72,
-            "surge_detected": false,
-            "price_change_5d": -5.69,
-            "bullish_surge": false
+            "surge_ratio": 2.25,
+            "surge_detected": true,
+            "price_change_5d": 0.56,
+            "bullish_surge": true
           }
         },
         {
@@ -758,27 +758,27 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.7,
-          "rs_return": -21.86,
+          "adr": 1.91,
+          "rs_return": -19.41,
           "volume_surge": {
-            "surge_ratio": 0.63,
+            "surge_ratio": 0.5,
             "surge_detected": false,
-            "price_change_5d": -5.05,
+            "price_change_5d": 1.65,
             "bullish_surge": false
           }
         },
         {
           "ticker": "EMAMILTD.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.78,
-          "rs_return": -7.58,
+          "adr": 2.93,
+          "rs_return": -13.15,
           "volume_surge": {
-            "surge_ratio": 1.2,
+            "surge_ratio": 0.65,
             "surge_detected": false,
-            "price_change_5d": -3.38,
+            "price_change_5d": -3.22,
             "bullish_surge": false
           }
         },
@@ -788,44 +788,44 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.04,
-          "rs_return": -8.1,
+          "adr": 2.28,
+          "rs_return": -6.98,
           "volume_surge": {
-            "surge_ratio": 0.99,
+            "surge_ratio": 0.64,
             "surge_detected": false,
-            "price_change_5d": 0.2,
+            "price_change_5d": -0.6,
             "bullish_surge": false
           }
         }
       ],
       "avg_minervini_score": 11.7,
-      "avg_qullamaggie_score": 21.7,
-      "avg_adr": 1.87,
+      "avg_qullamaggie_score": 25.0,
+      "avg_adr": 2.17,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 0.0,
-      "surge_pct": 0.0,
-      "bullish_score": 13.4
+      "surge_pct": 10.0,
+      "bullish_score": 16.7
     },
     "Metals": {
       "sector": "Metals",
       "total_stocks": 10,
       "minervini_passed": 0,
-      "qullamaggie_passed": 1,
+      "qullamaggie_passed": 0,
       "volume_surge_count": 0,
       "bullish_surge_count": 0,
       "stocks": [
         {
           "ticker": "TATASTEEL.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.49,
-          "rs_return": -5.18,
+          "adr": 2.51,
+          "rs_return": -8.02,
           "volume_surge": {
-            "surge_ratio": 1.08,
+            "surge_ratio": 0.79,
             "surge_detected": false,
-            "price_change_5d": -5.06,
+            "price_change_5d": -2.78,
             "bullish_surge": false
           }
         },
@@ -835,12 +835,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.86,
-          "rs_return": -2.29,
+          "adr": 2.07,
+          "rs_return": -8.84,
           "volume_surge": {
-            "surge_ratio": 1.11,
+            "surge_ratio": 0.78,
             "surge_detected": false,
-            "price_change_5d": -3.33,
+            "price_change_5d": -5.35,
             "bullish_surge": false
           }
         },
@@ -850,57 +850,57 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.85,
-          "rs_return": 1.33,
+          "adr": 2.11,
+          "rs_return": -6.2,
           "volume_surge": {
-            "surge_ratio": 1.17,
+            "surge_ratio": 1.1,
             "surge_detected": false,
-            "price_change_5d": -3.23,
+            "price_change_5d": -5.25,
             "bullish_surge": false
           }
         },
         {
           "ticker": "SAIL.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 66.7,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
-          "qullamaggie_passed": true,
-          "adr": 3.11,
-          "rs_return": 9.98,
+          "qullamaggie_passed": false,
+          "adr": 3.42,
+          "rs_return": 5.41,
           "volume_surge": {
-            "surge_ratio": 0.85,
+            "surge_ratio": 0.94,
             "surge_detected": false,
-            "price_change_5d": -3.68,
+            "price_change_5d": -2.13,
             "bullish_surge": false
           }
         },
         {
           "ticker": "VEDL.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.23,
-          "rs_return": -6.32,
+          "adr": 2.6,
+          "rs_return": -1.81,
           "volume_surge": {
-            "surge_ratio": 0.82,
+            "surge_ratio": 1.06,
             "surge_detected": false,
-            "price_change_5d": -4.22,
+            "price_change_5d": 3.06,
             "bullish_surge": false
           }
         },
         {
           "ticker": "COALINDIA.NS",
-          "minervini_score": 50.0,
-          "qullamaggie_score": 50.0,
+          "minervini_score": 33.3,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.77,
-          "rs_return": 1.53,
+          "adr": 1.97,
+          "rs_return": -3.76,
           "volume_surge": {
-            "surge_ratio": 0.76,
+            "surge_ratio": 0.71,
             "surge_detected": false,
-            "price_change_5d": -0.38,
+            "price_change_5d": -5.0,
             "bullish_surge": false
           }
         },
@@ -910,42 +910,42 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.14,
-          "rs_return": -11.44,
+          "adr": 2.35,
+          "rs_return": -15.21,
           "volume_surge": {
-            "surge_ratio": 1.1,
+            "surge_ratio": 1.0,
             "surge_detected": false,
-            "price_change_5d": -7.18,
+            "price_change_5d": -3.58,
             "bullish_surge": false
           }
         },
         {
           "ticker": "MOIL.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 50.0,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.63,
-          "rs_return": -11.29,
+          "adr": 2.77,
+          "rs_return": -15.34,
           "volume_surge": {
-            "surge_ratio": 0.35,
+            "surge_ratio": 0.41,
             "surge_detected": false,
-            "price_change_5d": -1.34,
+            "price_change_5d": -1.97,
             "bullish_surge": false
           }
         },
         {
           "ticker": "NATIONALUM.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.44,
-          "rs_return": -2.74,
+          "adr": 2.71,
+          "rs_return": -13.35,
           "volume_surge": {
-            "surge_ratio": 0.91,
+            "surge_ratio": 0.8,
             "surge_detected": false,
-            "price_change_5d": -5.41,
+            "price_change_5d": -7.24,
             "bullish_surge": false
           }
         },
@@ -955,23 +955,23 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.55,
-          "rs_return": -2.0,
+          "adr": 2.66,
+          "rs_return": -4.33,
           "volume_surge": {
-            "surge_ratio": 0.56,
+            "surge_ratio": 0.27,
             "surge_detected": false,
-            "price_change_5d": -3.83,
+            "price_change_5d": -2.1,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 31.7,
-      "avg_qullamaggie_score": 35.0,
-      "avg_adr": 2.31,
+      "avg_minervini_score": 30.0,
+      "avg_qullamaggie_score": 25.0,
+      "avg_adr": 2.52,
       "minervini_pct": 0.0,
-      "qullamaggie_pct": 10.0,
+      "qullamaggie_pct": 0.0,
       "surge_pct": 0.0,
-      "bullish_score": 26.7
+      "bullish_score": 22.0
     },
     "Energy": {
       "sector": "Energy",
@@ -987,12 +987,12 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.45,
-          "rs_return": -6.84,
+          "adr": 1.67,
+          "rs_return": -10.68,
           "volume_surge": {
-            "surge_ratio": 1.46,
+            "surge_ratio": 1.08,
             "surge_detected": false,
-            "price_change_5d": -3.05,
+            "price_change_5d": -2.66,
             "bullish_surge": false
           }
         },
@@ -1002,12 +1002,12 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.78,
-          "rs_return": -8.28,
+          "adr": 1.88,
+          "rs_return": -11.48,
           "volume_surge": {
-            "surge_ratio": 1.08,
+            "surge_ratio": 0.98,
             "surge_detected": false,
-            "price_change_5d": -4.36,
+            "price_change_5d": -2.45,
             "bullish_surge": false
           }
         },
@@ -1017,12 +1017,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.24,
-          "rs_return": -2.06,
+          "adr": 2.29,
+          "rs_return": -5.65,
           "volume_surge": {
-            "surge_ratio": 1.05,
+            "surge_ratio": 0.97,
             "surge_detected": false,
-            "price_change_5d": -3.63,
+            "price_change_5d": -2.98,
             "bullish_surge": false
           }
         },
@@ -1032,12 +1032,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.76,
-          "rs_return": -4.02,
+          "adr": 1.89,
+          "rs_return": -6.42,
           "volume_surge": {
-            "surge_ratio": 1.13,
+            "surge_ratio": 0.95,
             "surge_detected": false,
-            "price_change_5d": -3.52,
+            "price_change_5d": -2.59,
             "bullish_surge": false
           }
         },
@@ -1047,119 +1047,119 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.68,
-          "rs_return": -1.13,
+          "adr": 1.85,
+          "rs_return": -1.34,
           "volume_surge": {
-            "surge_ratio": 1.13,
+            "surge_ratio": 0.69,
             "surge_detected": false,
-            "price_change_5d": -3.39,
+            "price_change_5d": 0.73,
             "bullish_surge": false
           }
         },
         {
           "ticker": "POWERGRID.NS",
-          "minervini_score": 33.3,
+          "minervini_score": 16.7,
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.75,
-          "rs_return": -7.24,
+          "adr": 1.94,
+          "rs_return": -12.63,
           "volume_surge": {
-            "surge_ratio": 1.36,
+            "surge_ratio": 0.87,
             "surge_detected": false,
-            "price_change_5d": -4.17,
+            "price_change_5d": -3.17,
             "bullish_surge": false
           }
         },
         {
           "ticker": "NTPC.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.47,
-          "rs_return": -6.51,
+          "adr": 1.68,
+          "rs_return": -10.27,
           "volume_surge": {
-            "surge_ratio": 1.0,
+            "surge_ratio": 1.05,
             "surge_detected": false,
-            "price_change_5d": -1.26,
+            "price_change_5d": -3.96,
             "bullish_surge": false
           }
         },
         {
           "ticker": "ADANIGREEN.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.63,
-          "rs_return": -14.4,
+          "adr": 3.33,
+          "rs_return": -20.82,
           "volume_surge": {
-            "surge_ratio": 1.57,
+            "surge_ratio": 2.25,
             "surge_detected": true,
-            "price_change_5d": -0.66,
+            "price_change_5d": -1.05,
             "bullish_surge": false
           }
         },
         {
           "ticker": "TATAPOWER.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.8,
-          "rs_return": -5.83,
+          "adr": 2.06,
+          "rs_return": -9.09,
           "volume_surge": {
-            "surge_ratio": 1.18,
+            "surge_ratio": 1.09,
             "surge_detected": false,
-            "price_change_5d": -4.65,
+            "price_change_5d": -2.32,
             "bullish_surge": false
           }
         },
         {
           "ticker": "CESC.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.41,
-          "rs_return": -15.22,
+          "adr": 2.55,
+          "rs_return": -11.11,
           "volume_surge": {
-            "surge_ratio": 1.18,
+            "surge_ratio": 0.97,
             "surge_detected": false,
-            "price_change_5d": -4.27,
+            "price_change_5d": 2.01,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 23.3,
-      "avg_qullamaggie_score": 8.3,
-      "avg_adr": 1.9,
+      "avg_minervini_score": 21.7,
+      "avg_qullamaggie_score": 11.7,
+      "avg_adr": 2.11,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 0.0,
       "surge_pct": 0.0,
-      "bullish_score": 12.6
+      "bullish_score": 13.4
     },
     "Realty": {
       "sector": "Realty",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 1,
-      "volume_surge_count": 1,
+      "volume_surge_count": 2,
       "bullish_surge_count": 0,
       "stocks": [
         {
           "ticker": "DLF.NS",
-          "minervini_score": 33.3,
+          "minervini_score": 16.7,
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.35,
-          "rs_return": 7.55,
+          "adr": 2.52,
+          "rs_return": -2.07,
           "volume_surge": {
-            "surge_ratio": 1.28,
+            "surge_ratio": 0.81,
             "surge_detected": false,
-            "price_change_5d": -1.41,
+            "price_change_5d": -3.51,
             "bullish_surge": false
           }
         },
@@ -1169,149 +1169,149 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.82,
-          "rs_return": -18.52,
+          "adr": 2.76,
+          "rs_return": -26.2,
           "volume_surge": {
-            "surge_ratio": 0.81,
+            "surge_ratio": 0.64,
             "surge_detected": false,
-            "price_change_5d": -5.58,
+            "price_change_5d": -3.26,
             "bullish_surge": false
           }
         },
         {
           "ticker": "OBEROIRLTY.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.75,
-          "rs_return": -5.62,
+          "adr": 2.82,
+          "rs_return": -11.02,
           "volume_surge": {
-            "surge_ratio": 0.86,
+            "surge_ratio": 0.67,
             "surge_detected": false,
-            "price_change_5d": -5.13,
+            "price_change_5d": -2.72,
             "bullish_surge": false
           }
         },
         {
           "ticker": "PRESTIGE.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.92,
-          "rs_return": -11.01,
+          "adr": 2.95,
+          "rs_return": -16.03,
           "volume_surge": {
-            "surge_ratio": 1.59,
-            "surge_detected": true,
-            "price_change_5d": -1.64,
+            "surge_ratio": 1.03,
+            "surge_detected": false,
+            "price_change_5d": -1.7,
             "bullish_surge": false
           }
         },
         {
           "ticker": "BRIGADE.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 83.3,
+          "qullamaggie_score": 66.7,
           "minervini_passed": false,
           "qullamaggie_passed": true,
-          "adr": 3.69,
-          "rs_return": 14.55,
+          "adr": 3.53,
+          "rs_return": 3.89,
           "volume_surge": {
-            "surge_ratio": 0.57,
+            "surge_ratio": 0.46,
             "surge_detected": false,
-            "price_change_5d": -4.01,
+            "price_change_5d": 0.75,
             "bullish_surge": false
           }
         },
         {
           "ticker": "SOBHA.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.66,
-          "rs_return": -16.99,
+          "adr": 2.99,
+          "rs_return": -22.04,
           "volume_surge": {
-            "surge_ratio": 1.12,
-            "surge_detected": false,
-            "price_change_5d": -2.19,
+            "surge_ratio": 2.58,
+            "surge_detected": true,
+            "price_change_5d": -3.01,
             "bullish_surge": false
           }
         },
         {
           "ticker": "PHOENIXLTD.NS",
-          "minervini_score": 66.7,
-          "qullamaggie_score": 16.7,
+          "minervini_score": 50.0,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.41,
-          "rs_return": -4.38,
+          "adr": 2.79,
+          "rs_return": -13.25,
           "volume_surge": {
-            "surge_ratio": 0.82,
+            "surge_ratio": 1.32,
             "surge_detected": false,
-            "price_change_5d": -2.38,
+            "price_change_5d": -4.52,
             "bullish_surge": false
           }
         },
         {
           "ticker": "MAHLIFE.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 3.4,
-          "rs_return": -2.1,
+          "adr": 3.63,
+          "rs_return": -6.95,
           "volume_surge": {
-            "surge_ratio": 0.92,
-            "surge_detected": false,
-            "price_change_5d": -1.5,
+            "surge_ratio": 1.84,
+            "surge_detected": true,
+            "price_change_5d": -1.31,
             "bullish_surge": false
           }
         },
         {
           "ticker": "SUNTECK.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.81,
-          "rs_return": -10.22,
+          "adr": 2.94,
+          "rs_return": -12.58,
           "volume_surge": {
-            "surge_ratio": 1.06,
+            "surge_ratio": 0.47,
             "surge_detected": false,
-            "price_change_5d": -1.5,
+            "price_change_5d": -2.21,
             "bullish_surge": false
           }
         },
         {
           "ticker": "LODHA.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 3.33,
-          "rs_return": 1.95,
+          "adr": 3.35,
+          "rs_return": -5.12,
           "volume_surge": {
-            "surge_ratio": 1.43,
+            "surge_ratio": 0.86,
             "surge_detected": false,
-            "price_change_5d": -2.76,
+            "price_change_5d": -4.22,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 25.0,
+      "avg_minervini_score": 21.7,
       "avg_qullamaggie_score": 28.3,
-      "avg_adr": 2.91,
+      "avg_adr": 3.03,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 10.0,
       "surge_pct": 0.0,
-      "bullish_score": 21.3
+      "bullish_score": 20.0
     },
     "Chemicals": {
       "sector": "Chemicals",
       "total_stocks": 10,
       "minervini_passed": 0,
-      "qullamaggie_passed": 2,
+      "qullamaggie_passed": 0,
       "volume_surge_count": 0,
       "bullish_surge_count": 0,
       "stocks": [
@@ -1321,27 +1321,27 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.94,
-          "rs_return": -5.98,
+          "adr": 2.18,
+          "rs_return": -4.52,
           "volume_surge": {
-            "surge_ratio": 0.97,
+            "surge_ratio": 0.69,
             "surge_detected": false,
-            "price_change_5d": -3.37,
+            "price_change_5d": -0.89,
             "bullish_surge": false
           }
         },
         {
           "ticker": "SRF.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.81,
-          "rs_return": -9.33,
+          "adr": 2.03,
+          "rs_return": -9.23,
           "volume_surge": {
-            "surge_ratio": 0.98,
+            "surge_ratio": 0.79,
             "surge_detected": false,
-            "price_change_5d": -3.46,
+            "price_change_5d": 1.09,
             "bullish_surge": false
           }
         },
@@ -1351,72 +1351,72 @@
           "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 3.01,
-          "rs_return": 0.3,
+          "adr": 3.51,
+          "rs_return": -2.35,
           "volume_surge": {
-            "surge_ratio": 0.42,
+            "surge_ratio": 0.56,
             "surge_detected": false,
-            "price_change_5d": -4.76,
+            "price_change_5d": -0.02,
             "bullish_surge": false
           }
         },
         {
           "ticker": "NAVINFLUOR.NS",
-          "minervini_score": 50.0,
-          "qullamaggie_score": 66.7,
+          "minervini_score": 66.7,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
-          "qullamaggie_passed": true,
-          "adr": 2.49,
-          "rs_return": 12.22,
+          "qullamaggie_passed": false,
+          "adr": 2.62,
+          "rs_return": 12.31,
           "volume_surge": {
-            "surge_ratio": 0.49,
+            "surge_ratio": 0.38,
             "surge_detected": false,
-            "price_change_5d": -3.75,
+            "price_change_5d": 2.99,
             "bullish_surge": false
           }
         },
         {
           "ticker": "TATACHEM.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 4.02,
-          "rs_return": -12.87,
+          "adr": 4.57,
+          "rs_return": -10.38,
           "volume_surge": {
-            "surge_ratio": 0.92,
+            "surge_ratio": 0.84,
             "surge_detected": false,
-            "price_change_5d": -3.84,
+            "price_change_5d": 1.94,
             "bullish_surge": false
           }
         },
         {
           "ticker": "GALAXYSURF.NS",
           "minervini_score": 66.7,
-          "qullamaggie_score": 66.7,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
-          "qullamaggie_passed": true,
-          "adr": 4.1,
-          "rs_return": 17.05,
+          "qullamaggie_passed": false,
+          "adr": 4.09,
+          "rs_return": 32.48,
           "volume_surge": {
-            "surge_ratio": 1.33,
+            "surge_ratio": 1.09,
             "surge_detected": false,
-            "price_change_5d": 3.36,
+            "price_change_5d": 9.89,
             "bullish_surge": false
           }
         },
         {
           "ticker": "CLEAN.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.98,
-          "rs_return": 4.78,
+          "adr": 3.13,
+          "rs_return": 5.43,
           "volume_surge": {
-            "surge_ratio": 0.62,
+            "surge_ratio": 0.42,
             "surge_detected": false,
-            "price_change_5d": -0.79,
+            "price_change_5d": -0.54,
             "bullish_surge": false
           }
         },
@@ -1426,21 +1426,21 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.99,
-          "rs_return": -6.5,
+          "adr": 2.2,
+          "rs_return": -1.14,
           "volume_surge": {
-            "surge_ratio": 0.8,
+            "surge_ratio": 0.94,
             "surge_detected": false,
-            "price_change_5d": -3.34,
+            "price_change_5d": 2.01,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 33.3,
-      "avg_qullamaggie_score": 41.7,
-      "avg_adr": 2.79,
+      "avg_minervini_score": 35.4,
+      "avg_qullamaggie_score": 39.6,
+      "avg_adr": 3.04,
       "minervini_pct": 0.0,
-      "qullamaggie_pct": 25.0,
+      "qullamaggie_pct": 0.0,
       "surge_pct": 0.0,
       "bullish_score": 30.0
     },
@@ -1448,9 +1448,9 @@
       "sector": "Capital Goods",
       "total_stocks": 10,
       "minervini_passed": 0,
-      "qullamaggie_passed": 0,
-      "volume_surge_count": 0,
-      "bullish_surge_count": 0,
+      "qullamaggie_passed": 1,
+      "volume_surge_count": 2,
+      "bullish_surge_count": 1,
       "stocks": [
         {
           "ticker": "LT.NS",
@@ -1458,27 +1458,27 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.52,
-          "rs_return": -4.34,
+          "adr": 1.81,
+          "rs_return": -5.97,
           "volume_surge": {
-            "surge_ratio": 1.37,
+            "surge_ratio": 1.0,
             "surge_detected": false,
-            "price_change_5d": -3.95,
+            "price_change_5d": -3.5,
             "bullish_surge": false
           }
         },
         {
           "ticker": "SIEMENS.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.36,
-          "rs_return": 8.33,
+          "adr": 2.84,
+          "rs_return": 4.99,
           "volume_surge": {
-            "surge_ratio": 0.63,
+            "surge_ratio": 0.71,
             "surge_detected": false,
-            "price_change_5d": -4.18,
+            "price_change_5d": -0.91,
             "bullish_surge": false
           }
         },
@@ -1488,12 +1488,12 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.16,
-          "rs_return": 2.47,
+          "adr": 2.58,
+          "rs_return": 1.09,
           "volume_surge": {
-            "surge_ratio": 0.91,
+            "surge_ratio": 0.97,
             "surge_detected": false,
-            "price_change_5d": -2.76,
+            "price_change_5d": -0.13,
             "bullish_surge": false
           }
         },
@@ -1503,27 +1503,27 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.76,
-          "rs_return": 13.69,
+          "adr": 3.14,
+          "rs_return": 8.93,
           "volume_surge": {
-            "surge_ratio": 1.18,
-            "surge_detected": false,
-            "price_change_5d": 2.2,
-            "bullish_surge": false
+            "surge_ratio": 1.72,
+            "surge_detected": true,
+            "price_change_5d": 2.23,
+            "bullish_surge": true
           }
         },
         {
           "ticker": "THERMAX.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.9,
-          "rs_return": -29.39,
+          "adr": 3.21,
+          "rs_return": -24.88,
           "volume_surge": {
-            "surge_ratio": 0.9,
+            "surge_ratio": 0.88,
             "surge_detected": false,
-            "price_change_5d": -5.72,
+            "price_change_5d": 1.91,
             "bullish_surge": false
           }
         },
@@ -1533,42 +1533,42 @@
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.23,
-          "rs_return": -11.9,
+          "adr": 2.51,
+          "rs_return": -10.37,
           "volume_surge": {
-            "surge_ratio": 1.27,
+            "surge_ratio": 1.04,
             "surge_detected": false,
-            "price_change_5d": -2.85,
+            "price_change_5d": 1.06,
             "bullish_surge": false
           }
         },
         {
           "ticker": "AIAENG.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 66.7,
           "minervini_passed": false,
-          "qullamaggie_passed": false,
-          "adr": 2.76,
-          "rs_return": -18.39,
+          "qullamaggie_passed": true,
+          "adr": 3.01,
+          "rs_return": -20.84,
           "volume_surge": {
-            "surge_ratio": 0.6,
+            "surge_ratio": 0.57,
             "surge_detected": false,
-            "price_change_5d": -1.33,
+            "price_change_5d": -2.83,
             "bullish_surge": false
           }
         },
         {
           "ticker": "GRINDWELL.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.84,
-          "rs_return": 0.22,
+          "adr": 3.11,
+          "rs_return": -0.61,
           "volume_surge": {
-            "surge_ratio": 1.21,
+            "surge_ratio": 1.41,
             "surge_detected": false,
-            "price_change_5d": 1.56,
+            "price_change_5d": -0.76,
             "bullish_surge": false
           }
         },
@@ -1578,45 +1578,45 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.45,
-          "rs_return": -6.34,
+          "adr": 2.53,
+          "rs_return": -11.34,
           "volume_surge": {
-            "surge_ratio": 0.85,
+            "surge_ratio": 0.77,
             "surge_detected": false,
-            "price_change_5d": -4.16,
+            "price_change_5d": -4.55,
             "bullish_surge": false
           }
         },
         {
           "ticker": "TIINDIA.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.45,
-          "rs_return": -20.64,
+          "adr": 3.23,
+          "rs_return": -23.82,
           "volume_surge": {
-            "surge_ratio": 1.24,
-            "surge_detected": false,
-            "price_change_5d": -8.42,
+            "surge_ratio": 1.81,
+            "surge_detected": true,
+            "price_change_5d": -4.3,
             "bullish_surge": false
           }
         }
       ],
       "avg_minervini_score": 40.0,
-      "avg_qullamaggie_score": 18.3,
-      "avg_adr": 2.44,
+      "avg_qullamaggie_score": 26.7,
+      "avg_adr": 2.8,
       "minervini_pct": 0.0,
-      "qullamaggie_pct": 0.0,
-      "surge_pct": 0.0,
-      "bullish_score": 23.3
+      "qullamaggie_pct": 10.0,
+      "surge_pct": 10.0,
+      "bullish_score": 28.7
     },
     "Consumer Durables": {
       "sector": "Consumer Durables",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 0,
-      "volume_surge_count": 0,
+      "volume_surge_count": 1,
       "bullish_surge_count": 0,
       "stocks": [
         {
@@ -1625,72 +1625,72 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.73,
-          "rs_return": 0.18,
+          "adr": 1.98,
+          "rs_return": -3.94,
           "volume_surge": {
-            "surge_ratio": 1.09,
-            "surge_detected": false,
-            "price_change_5d": -6.23,
+            "surge_ratio": 1.62,
+            "surge_detected": true,
+            "price_change_5d": -4.07,
             "bullish_surge": false
           }
         },
         {
           "ticker": "HAVELLS.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.01,
-          "rs_return": -13.46,
+          "adr": 2.24,
+          "rs_return": -11.31,
           "volume_surge": {
-            "surge_ratio": 1.37,
+            "surge_ratio": 0.71,
             "surge_detected": false,
-            "price_change_5d": -4.68,
+            "price_change_5d": 0.6,
             "bullish_surge": false
           }
         },
         {
           "ticker": "VOLTAS.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.4,
-          "rs_return": -15.71,
+          "adr": 2.65,
+          "rs_return": -24.49,
           "volume_surge": {
-            "surge_ratio": 1.08,
+            "surge_ratio": 0.94,
             "surge_detected": false,
-            "price_change_5d": -5.51,
+            "price_change_5d": -3.32,
             "bullish_surge": false
           }
         },
         {
           "ticker": "BLUESTARCO.NS",
-          "minervini_score": 0.0,
+          "minervini_score": 16.7,
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 3.16,
-          "rs_return": -3.93,
+          "adr": 3.41,
+          "rs_return": -10.02,
           "volume_surge": {
-            "surge_ratio": 1.48,
+            "surge_ratio": 0.72,
             "surge_detected": false,
-            "price_change_5d": -3.8,
+            "price_change_5d": 3.54,
             "bullish_surge": false
           }
         },
         {
           "ticker": "CROMPTON.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.35,
-          "rs_return": -17.24,
+          "adr": 2.45,
+          "rs_return": -21.31,
           "volume_surge": {
-            "surge_ratio": 1.05,
+            "surge_ratio": 0.57,
             "surge_detected": false,
-            "price_change_5d": -3.14,
+            "price_change_5d": -4.04,
             "bullish_surge": false
           }
         },
@@ -1700,27 +1700,27 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.76,
-          "rs_return": -1.1,
+          "adr": 2.81,
+          "rs_return": -5.02,
           "volume_surge": {
-            "surge_ratio": 0.92,
+            "surge_ratio": 0.51,
             "surge_detected": false,
-            "price_change_5d": -4.54,
+            "price_change_5d": -0.5,
             "bullish_surge": false
           }
         },
         {
           "ticker": "AMBER.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.39,
-          "rs_return": -11.98,
+          "adr": 2.88,
+          "rs_return": -15.95,
           "volume_surge": {
-            "surge_ratio": 0.77,
+            "surge_ratio": 0.7,
             "surge_detected": false,
-            "price_change_5d": -6.11,
+            "price_change_5d": -0.62,
             "bullish_surge": false
           }
         },
@@ -1730,74 +1730,74 @@
           "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.59,
-          "rs_return": -1.38,
+          "adr": 2.83,
+          "rs_return": -3.85,
           "volume_surge": {
-            "surge_ratio": 0.28,
+            "surge_ratio": 0.37,
             "surge_detected": false,
-            "price_change_5d": -2.38,
+            "price_change_5d": -2.88,
             "bullish_surge": false
           }
         },
         {
           "ticker": "BAJAJELEC.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 33.3,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.59,
-          "rs_return": -5.54,
+          "adr": 2.78,
+          "rs_return": -8.72,
           "volume_surge": {
-            "surge_ratio": 0.34,
+            "surge_ratio": 0.21,
             "surge_detected": false,
-            "price_change_5d": -5.8,
+            "price_change_5d": -0.55,
             "bullish_surge": false
           }
         },
         {
           "ticker": "ORIENTELEC.NS",
           "minervini_score": 16.7,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.94,
-          "rs_return": -8.94,
+          "adr": 3.23,
+          "rs_return": -1.41,
           "volume_surge": {
-            "surge_ratio": 0.53,
+            "surge_ratio": 0.66,
             "surge_detected": false,
-            "price_change_5d": -2.23,
+            "price_change_5d": 8.8,
             "bullish_surge": false
           }
         }
       ],
-      "avg_minervini_score": 16.7,
-      "avg_qullamaggie_score": 20.0,
-      "avg_adr": 2.49,
+      "avg_minervini_score": 18.3,
+      "avg_qullamaggie_score": 23.3,
+      "avg_adr": 2.73,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 0.0,
       "surge_pct": 0.0,
-      "bullish_score": 14.7
+      "bullish_score": 16.6
     },
     "Financial Services": {
       "sector": "Financial Services",
       "total_stocks": 10,
       "minervini_passed": 0,
       "qullamaggie_passed": 1,
-      "volume_surge_count": 1,
+      "volume_surge_count": 0,
       "bullish_surge_count": 0,
       "stocks": [
         {
           "ticker": "BAJFINANCE.NS",
-          "minervini_score": 50.0,
+          "minervini_score": 33.3,
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.95,
-          "rs_return": -3.93,
+          "adr": 2.17,
+          "rs_return": -4.92,
           "volume_surge": {
-            "surge_ratio": 1.16,
+            "surge_ratio": 1.04,
             "surge_detected": false,
-            "price_change_5d": -2.63,
+            "price_change_5d": -1.34,
             "bullish_surge": false
           }
         },
@@ -1807,143 +1807,143 @@
           "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.74,
-          "rs_return": -6.11,
+          "adr": 1.92,
+          "rs_return": -8.12,
           "volume_surge": {
-            "surge_ratio": 1.16,
+            "surge_ratio": 0.81,
             "surge_detected": false,
-            "price_change_5d": -1.66,
+            "price_change_5d": -1.94,
             "bullish_surge": false
           }
         },
         {
           "ticker": "SBILIFE.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.35,
-          "rs_return": -3.69,
+          "adr": 2.52,
+          "rs_return": -9.37,
           "volume_surge": {
-            "surge_ratio": 1.79,
-            "surge_detected": true,
-            "price_change_5d": -1.1,
+            "surge_ratio": 1.0,
+            "surge_detected": false,
+            "price_change_5d": -2.44,
             "bullish_surge": false
           }
         },
         {
           "ticker": "HDFCLIFE.NS",
-          "minervini_score": 0.0,
+          "minervini_score": 16.7,
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.75,
-          "rs_return": -4.72,
+          "adr": 2.71,
+          "rs_return": 0.41,
           "volume_surge": {
-            "surge_ratio": 1.12,
+            "surge_ratio": 0.86,
             "surge_detected": false,
-            "price_change_5d": -0.29,
+            "price_change_5d": 4.99,
             "bullish_surge": false
           }
         },
         {
           "ticker": "ICICIPRULI.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 0.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.86,
-          "rs_return": -4.98,
+          "adr": 2.74,
+          "rs_return": -8.59,
           "volume_surge": {
-            "surge_ratio": 0.97,
+            "surge_ratio": 0.51,
             "surge_detected": false,
-            "price_change_5d": -1.48,
+            "price_change_5d": 1.26,
             "bullish_surge": false
           }
         },
         {
           "ticker": "CHOLAFIN.NS",
-          "minervini_score": 33.3,
+          "minervini_score": 16.7,
           "qullamaggie_score": 0.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.4,
-          "rs_return": -9.39,
+          "adr": 2.58,
+          "rs_return": -10.53,
           "volume_surge": {
             "surge_ratio": 1.02,
             "surge_detected": false,
-            "price_change_5d": -3.61,
+            "price_change_5d": -1.31,
             "bullish_surge": false
           }
         },
         {
           "ticker": "MUTHOOTFIN.NS",
           "minervini_score": 0.0,
-          "qullamaggie_score": 50.0,
+          "qullamaggie_score": 16.7,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 1.96,
-          "rs_return": -11.88,
+          "adr": 2.15,
+          "rs_return": -12.74,
           "volume_surge": {
-            "surge_ratio": 0.7,
+            "surge_ratio": 0.55,
             "surge_detected": false,
-            "price_change_5d": -4.16,
+            "price_change_5d": -3.1,
             "bullish_surge": false
           }
         },
         {
           "ticker": "MANAPPURAM.NS",
           "minervini_score": 50.0,
-          "qullamaggie_score": 16.7,
+          "qullamaggie_score": 33.3,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 2.91,
-          "rs_return": -6.23,
+          "adr": 2.94,
+          "rs_return": -2.05,
           "volume_surge": {
-            "surge_ratio": 1.11,
+            "surge_ratio": 0.64,
             "surge_detected": false,
-            "price_change_5d": -6.9,
+            "price_change_5d": 3.14,
             "bullish_surge": false
           }
         },
         {
           "ticker": "PNBHOUSING.NS",
-          "minervini_score": 50.0,
-          "qullamaggie_score": 33.3,
+          "minervini_score": 66.7,
+          "qullamaggie_score": 50.0,
           "minervini_passed": false,
           "qullamaggie_passed": false,
-          "adr": 3.0,
-          "rs_return": 4.13,
+          "adr": 3.14,
+          "rs_return": 10.56,
           "volume_surge": {
-            "surge_ratio": 0.92,
+            "surge_ratio": 1.1,
             "surge_detected": false,
-            "price_change_5d": 1.18,
+            "price_change_5d": 8.68,
             "bullish_surge": false
           }
         },
         {
           "ticker": "IIFL.NS",
           "minervini_score": 33.3,
-          "qullamaggie_score": 66.7,
+          "qullamaggie_score": 83.3,
           "minervini_passed": false,
           "qullamaggie_passed": true,
-          "adr": 3.51,
-          "rs_return": 15.91,
+          "adr": 3.25,
+          "rs_return": 12.28,
           "volume_surge": {
-            "surge_ratio": 0.65,
+            "surge_ratio": 0.57,
             "surge_detected": false,
-            "price_change_5d": -2.71,
+            "price_change_5d": 1.14,
             "bullish_surge": false
           }
         }
       ],
       "avg_minervini_score": 23.3,
-      "avg_qullamaggie_score": 21.7,
-      "avg_adr": 2.54,
+      "avg_qullamaggie_score": 23.3,
+      "avg_adr": 2.61,
       "minervini_pct": 0.0,
       "qullamaggie_pct": 10.0,
       "surge_pct": 0.0,
-      "bullish_score": 18.0
+      "bullish_score": 18.6
     }
   }
 }
